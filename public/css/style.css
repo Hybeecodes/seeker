@@ -1,0 +1,236 @@
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.navbar {
+  background-color: #fff;
+  margin: 0;
+  padding: 10px;
+}
+
+.secColor {
+  background-color: #2c1106;
+}
+
+.displayinformation {
+  background-color: white;
+  margin-bottom: 30px;
+}
+
+#ul_Interests {
+  padding: 20px;
+  margin: 10px;
+}
+
+#ul_Interests li {
+  margin-top: 20px;
+}
+
+#div_Contact {
+  margin: 20px 0 0 0;
+}
+
+h4.contact {
+  color: #2c1106;
+  font-weight: bold;
+}
+
+.LR_Padding {
+  padding: 0px 20px;
+}
+
+#reviews {
+  margin: 20px 0 40px 0;
+}
+
+#reviews li {
+  margin-top: 15px;
+}
+
+#AboutMe {
+  margin: 30px 0 0 0;
+}
+
+.myTitle {
+  padding: 20px 0px 10px 20px;
+}
+
+.whitefont {
+  color: #fff;
+}
+
+.user-account {
+  margin-top: 40px;
+}
+
+.navbar .nav.navbar-right li a {
+  color: #000;
+  text-transform: uppercase;
+}
+.navbar .nav.navbar-right li.active a {
+  color: #c37f1e;
+}
+.jumbotron {
+  background-color: #fff;
+  background: url("../img/profile1.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.index2 .jumbotron {
+  background-color: #fff;
+  background: url("../img/profile.jpeg") no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.jumbotron .profile {
+  display: flex;
+  align-items: center;
+}
+.jumbotron .profile:nth-child(1) {
+  margin-right: auto;
+}
+.jumbotron .profile:nth-child(2) {
+  margin-left: auto;
+}
+.profile {
+  margin-top: 10px;
+}
+.profile-img {
+  border: 5px solid white;
+  border-radius: 100%;
+  z-index: 10;
+  margin: 10px 0px 3px 0px;
+}
+.profile-name {
+  background-color: #c37f1e;
+  padding: 10px 30px;
+  border-radius: 25px;
+  margin-left: -20px;
+
+  z-index: 1;
+}
+.jumbotron .profile-name p {
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  margin-bottom: 0;
+  color: #fff;
+}
+.jumbotron .btn {
+  border-radius: 25px;
+  color: #2c1106;
+  text-transform: uppercase;
+}
+.index2 .jumbotron .container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.index2 .jumbotron .profile-name:nth-child(1) {
+  margin-right: -20px;
+}
+.double-column .col-sm-12 {
+  border: 1px solid #b2afa6;
+  border-radius: 25px;
+  background-color: #fff;
+}
+.double-column .actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.double-column .btn {
+  padding: 10px 40px 10px 10px;
+  background-color: #2c1106;
+  text-transform: uppercase;
+  border-color: #2c1106;
+  border-radius: 15px;
+  font-weight: 700;
+  flex: 0 0 70%;
+}
+.double-column .fa {
+  border-radius: 50%;
+  background: #2c1106;
+  padding: 25px;
+  border: 5px solid white;
+  margin-left: -10px;
+  color: #fff;
+  font-size: 2.4rem;
+  width: 30%;
+}
+span.fa {
+  font-family: inherit;
+}
+.information .row {
+  border: 1px solid #b2afa6;
+  border-radius: 15px;
+}
+.information h2,
+.information h3,
+.information h4 {
+  text-align: center;
+  text-transform: uppercase;
+}
+/* media queries */
+@media screen and (min-width: 768px) {
+  .jumbotron {
+    height: 350px;
+  }
+  .jumbotron .profile:nth-child(1) {
+    margin-top: -50px;
+  }
+  .profile-img {
+    height: 250px;
+    width: 250px;
+  }
+  .double-column {
+    margin-top: -80px;
+  }
+  .double-column .col-sm-12 {
+    width: 100%;
+    margin: 0 15px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .jumbotron {
+    height: 300px;
+  }
+  .jumbotron .btn {
+    float: right;
+  }
+  .double-column {
+    margin-top: -120px;
+  }
+  .index2 .double-column {
+    margin-top: -50px;
+  }
+  .jumbotron .profile-name {
+    padding: 10px 20px;
+    margin-left: -15px;
+  }
+  .index2 .jumbotron .container {
+    display: block;
+  }
+  .index2 .jumbotron .profile:nth-child(2) {
+    float: right;
+  }
+  .index2 .jumbotron .profile-name:nth-child(1) {
+    margin-right: -15px;
+  }
+  .jumbotron .profile-name p {
+    font-size: 1.5rem;
+  }
+  .double-column .col-sm-6:nth-child(1) {
+    margin-bottom: 15px;
+  }
+  .profile-img {
+    height: 100px;
+    width: 100px;
+  }
+}

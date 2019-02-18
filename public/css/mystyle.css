@@ -1,0 +1,24 @@
+.brown {
+  background-color: #2c1106 !important;
+  /* margin: 10px; */
+}
+
+.icon-color {
+  color: #2c1106 !important;
+}
+
+.font_brown {
+  color: #2c1106 !important;
+}
+
+.testimonial-content {
+  /* background-image: url(../images/bg/testimonial-bg2.png) !important; */
+  padding: 140px 0 !important;
+  background-image: url(../images/bg/testimonial-bg3.png);
+  background-repeat: no-repeat !important;
+  background-position: right bottom !important;
+}
+
+.tr-account {
+  /* margin-top: -150px !important; */
+}

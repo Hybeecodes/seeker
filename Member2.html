@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Seeker</title>
+    <!--Stylesheets-->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css" />
+
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/mystyle.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="index2">
+    <!--Navbar-->
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="navbar-toggle collapsed"
+            data-toggle="collapse"
+            data-target="#navbar-collapsible"
+            aria-expanded="false"
+          >
+            <i class="fa fa-navicon"></i>
+          </button>
+          <a href="#" class="navbar-brand">
+              <img src=" ./img/LogoCampus.jpg" alt="logo"/>
+             </a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapsible">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Select Campus</a></li>
+            <li class="active"><a class="btn brown" href="index2.html">Logout</a>
+            	</li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!--Hero-->
+    <div class="jumbotron">
+      <div class="container">
+        <div class="profile">
+          <img src="img/profile1.jpg" alt="profile" class="profile-img" />
+          <div class="profile-name"><p>Taycorps</p></div>
+        </div>
+       
+
+
+        <div class="profile">
+                <div class="profile-name"><p>Lucas</p></div>
+                <img src="img/profile.jpeg" alt="profile" class="profile-img">
+              </div>
+      </div>
+    </div>
+    <!--Double columns-->
+    <div class="double-column">
+      <div class="container">
+        <div class="row">
+          <!-- <div class="col-sm-6 col-xs-12">
+            <div class="actions">
+              <button type="button" class="btn btn-primary">
+                Edit Profile
+              </button>
+              <i class="fa fa-user"></i>
+            </div>
+            <div class="actions">
+              <button type="button" class="btn btn-primary">
+                Find Job Seekers
+              </button>
+              <i class="fa fa-search"></i>
+            </div>
+            <div class="actions">
+              <button type="button" class="btn btn-primary">
+                Subscriptions
+              </button>
+              <i class="fa fa-dollar"></i>
+            </div>
+          </div> -->
+          <div class="col-sm-12">
+            <div class="row">
+              <div class="actions col-sm-4">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  style="margin:25px 0px;"
+                >
+                  <img
+                    src="images/icons/fun-fact-color1.png"
+                    alt="images"
+                    class="img-responsive center-block "
+                    style="margin-bottom: 10px ;"
+                  />
+                  Total job done
+                </button>
+                <span class="fa">1</span>
+              </div>
+
+              <div class="actions col-sm-4">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  style="margin:25px 0px;"
+                >
+                  <img
+                    src="images/icons/fun-fact-color2.png"
+                    alt="images"
+                    class="img-responsive center-block "
+                    style="margin-bottom: 10px ;"
+                  />
+                  Positive reviews
+                </button>
+                <span class="fa">100</span>
+              </div>
+
+              <div class="actions col-sm-4">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  style="margin:25px 0px;"
+                >
+                  <img
+                    src="images/icons/fun-fact-color3.png"
+                    alt="images"
+                    class="img-responsive center-block "
+                    style="margin-bottom: 10px ;"
+                  />
+                  Negative reviews
+                </button>
+                <span class="fa">1</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tr-profile container section-padding">
+      <div class="row">
+
+
+
+
+
+        <div class="col-sm-5 col-md-4">
+          <div class="title secColor whitefont">
+            <!-- <div class="icon"><img src="images/icons/2.png" alt="Icon" class="img-responsive"></div>  -->
+            <h4 class="myTitle"><b> <i class="fa fa-home fa-2x" aria-hidden="true"></i> Home  </b></h4>
+          </div>
+
+          <ul class="nav nav-tabs profile-tabs section" role="tablist">
+            <li role="presentation" class="active">
+              <a
+                href="#account-info"
+                aria-controls="account-info"
+                role="tab"
+                data-toggle="tab"
+                ><i class="fa fa-life-ring" aria-hidden="true"></i> Hire  Job
+                Seeker
+              </a>
+            </li>
+
+
+            <li role="presentation">
+                <a
+                  href="#edit-resume"
+                  aria-controls="edit-resume"
+                  role="tab"
+                  data-toggle="tab"
+                  ><span
+                    ><i class="fa fa-pencil-square-o" aria-hidden="true"></i
+                  ></span>
+                  Manage  Profile
+                </a>
+              </li>
+
+        
+
+            <!-- <li role="presentation" >
+              <a
+                href="#account-info"
+                aria-controls="account-info"
+                role="tab"
+                data-toggle="tab"
+                ><i class="fa fa-life-ring" aria-hidden="true"></i> Manage Bank
+                Account</a
+              >
+            </li> -->
+
+           
+            <li role="presentation">
+              <a
+                href="#edit-resume"
+                aria-controls="edit-resume"
+                role="tab"
+                data-toggle="tab"
+                ><span
+                  ><i class="fa fa-pencil-square-o" aria-hidden="true"></i
+                ></span>
+                Manage Subscriptions
+              </a>
+            </li>
+
+            <li role="presentation">
+                    <a
+                      href="#edit-resume"
+                      aria-controls="edit-resume"
+                      role="tab"
+                      data-toggle="tab"
+                      ><span
+                        ><i class="fa fa-pencil-square-o" aria-hidden="true"></i
+                      ></span>
+                      Manage Reviews
+                    </a>
+                  </li>
+
+
+           
+          </ul>
+        </div>
+
+        <div class="col-sm-7 col-md-8">
+
+
+         <div id="Dashboard_View">
+                    <div id="ProfileInfo" class="displayinformation">
+                      <div class="title title-after secColor whitefont">
+                      
+                        <h4 class="myTitle"><b>Profile Summary </b></h4>
+                      </div>
+
+                      <div class="media-body LR_Padding">
+                        <span id="AboutMe" class="tr-title">About Me </span>
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                          enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                          nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                          in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                          nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                          sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                        <br />
+                        <p>
+                          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                          accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+                          quae ab illo inventore veritatis et quasi architecto beatae
+                          vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
+                          voluptas sit aspernatur aut odit aut fugit, sed quia
+                          consequuntur magni।
+                        </p>
+                      </div>
+                    </div>
+
+                    <div id="JobCategoriesInfo" class="displayinformation">
+                      <div class="title title-after secColor whitefont">
+                        <!-- <div class="icon"><img src="images/icons/2.png" alt="Icon" class="img-responsive"></div>  -->
+                        <h4 class="myTitle"><b> List of what i can Do </b></h4>
+                      </div>
+
+                      <ul id="ul_Interests" class="list-inline">
+                        <li>
+                          <button class="btn btn-primary">
+                            <i class="fa fa-star" aria-hidden="true"></i> Cleaning
+                          </button>
+                        </li>
+                        <li>
+                          <button class="btn btn-primary">
+                            <i class="fa fa-star" aria-hidden="true"></i> Ironing
+                          </button>
+                        </li>
+                        <li>
+                          <button class="btn btn-primary">
+                            <i class="fa fa-star" aria-hidden="true"></i>Typing
+                          </button>
+                        </li>
+                        <li>
+                          <button class="btn btn-primary">
+                            <i class="fa fa-star" aria-hidden="true"></i> Washing
+                          </button>
+                        </li>
+                        <li>
+                          <button class="btn btn-primary">
+                            <i class="fa fa-star" aria-hidden="true"></i> MTH assignments
+                          </button>
+                        </li>
+                        <li>
+                          <button class="btn btn-primary">
+                            <i class="fa fa-star" aria-hidden="true"></i> Errands
+                          </button>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div id="ContactInfo" class="displayinformation">
+                                          <div class="title title-after secColor whitefont">
+                                          <!-- <div class="icon"><img src="images/icons/2.png" alt="Icon" class="img-responsive"></div>  -->
+                                          <h4 class="myTitle"><b> Contact Information </b></h4>
+                                          </div>
+                                        
+
+                                          <div id="div_Contact" class="LR_Padding">
+
+                                              <div class="LR_Padding">
+                                              <p >
+                                                      <h4 class="contact">Address :</h4>
+                                                      No 16 , Adeoti Avenue , New Bodija ( Oyo State)
+                                              </p>
+                                              <p>
+                                                      <h4 class="contact">School :</h4>
+                                                      Ladoke Akintola University of Scient & Tech : (Lautech) 
+                                                    
+                                              </p>
+
+                                              <p>
+                                                      <h4 class="contact"> Email & Phone Number</h4>
+                                                    Adeosun45623_333@yahoo.com , 
+                                                    (+234) 8034562343
+                                              </p>
+                                              <p>
+                                                  <h4 class="contact">Contact description</h4>
+                                                  <textarea style="width:95%; height: 80px;">
+
+                                                  </textarea>
+                                              </p>
+
+                                              </div>
+                                            
+                                            
+                                          </div>
+                                          <hr/>
+                          
+                                          <div class="updated-info LR_Padding">
+                                              <span class="pull-left">Last Login Date </span>
+                                              <span class="pull-right">24/4/2017</span>
+                                          </div>
+                    </div>
+
+
+                    <div id="ReviewsInfo" class="displayinformation">
+
+                                  <div class="title title-after secColor whitefont">
+                                          <!-- <div class="icon"><img src="images/icons/2.png" alt="Icon" class="img-responsive"></div>  -->
+                                          <h4 class="myTitle"><b> Top 10 Reviews </b></h4>
+                                          </div>
+
+
+                                        
+                                          <div  id="reviews" class="LR_Padding">   
+                                              <ul class="list-inline LR_Padding"> 
+
+
+                                            <li>
+                                                    <p>
+                                                          <i class="fa fa-user-circle fa-3x" aria-hidden="true"></i> 
+                                                          <b> Folasade (CSE-400level)</b><br/>
+                                                          I was really impressed with her services, she handled my laundry just the way i wanted . i give her 5 stars
+                                                    </p>  
+                                            </li>
+
+                                            <li>
+                                                  <p>
+                                                      <i class="fa fa-user-circle fa-3x" aria-hidden="true"></i> 
+                                                      <b> Folasade (CSE-400level)</b><br/>
+                                                      I was really impressed with her services, she handled my laundry just the way i wanted . i give her 5 stars
+                                                  </p>  
+                                        </li>
+
+                                        <li>
+                                              <p>
+                                                  <i class="fa fa-user-circle fa-3x" aria-hidden="true"></i> 
+                                                  <b> Folasade (CSE-400level)</b><br/>
+                                                  I was really impressed with her services, she handled my laundry just the way i wanted . i give her 5 stars
+                                              </p>  
+                                    </li>
+
+                                    <li>
+                                          <p>
+                                              <i class="fa fa-user-circle fa-3x" aria-hidden="true"></i> 
+                                              <b> Folasade (CSE-400level)</b><br/>
+                                              I was really impressed with her services, she handled my laundry just the way i wanted . i give her 5 stars
+                                          </p>  
+                                </li>
+
+                                <li>
+                                      <p>
+                                          <i class="fa fa-user-circle fa-3x" aria-hidden="true"></i> 
+                                          <b> Folasade (CSE-400level)</b><br/>
+                                          I was really impressed with her services, she handled my laundry just the way i wanted . i give her 5 stars
+                                      </p>  
+                            </li>
+                                                
+                                          </ul>	
+
+                                          </div>
+                                          <hr/>
+
+                                          <div class="updated-info LR_Padding">
+                                                  <span class="pull-left">Last Login Date </span>
+                                                  <span class="pull-right">24/4/2017</span>
+                                              </div>
+
+                                      
+
+                  </div>
+         </div>
+
+
+         <div id="ProfileManage_View">
+                  <div>
+
+                      <div class="page-title blueback" style="padding:30px; border-radius: 5px 5px 5px 5px;">
+                          <h3> Member Profile </h3>
+                      </div>
+
+                      <div class="section display-information">
+                          <div class="title title-after">
+
+                              <span class="icon pull-left"><img src="/images/icons/1.png" alt="Icon" class="img-responsive"></span>
+                              <h4>
+                                  <b style="margin-left:10px;">  Profile  Information </b>
+
+                              </h4>
+
+
+                          </div>
+
+
+
+                          <div class="tr-account section-padding">
+
+                              <div class="row">
+                                  <div class="col-md-12">
+                                      <div class="user-account">
+                                          <!-- Nav tabs -->
+                                          <ul class="nav nav-tabs  nav-justified" role="tablist">
+                                              <li role="presentation" class="active"><a href="#create" aria-controls="seeker" role="tab" data-toggle="tab">Create Profile</a></li>
+
+                                              <li role="presentation"><a href="#update" aria-controls="seeker" role="tab" data-toggle="tab"> Update Profile</a></li>
+
+                                              <li role="presentation"><a href="#categories" aria-controls="employers" role="tab" data-toggle="tab">Update Job Categories</a></li>
+                                          </ul>
+
+                                          <!-- Tab panes -->
+                                          <div class="tab-content">
+
+                                              <div id="create" role="tabpanel" class="tab-pane active">
+                                                  <div style="margin-top:20px;" id="profileCreateDiv">
+
+                                                      <input type="hidden" id="UserId" value="">
+
+
+                                                      <form action="/Member/Profile" method="post" class="tr-form">
+
+                                                          <div class="form-group ">
+                                                              <input type="text" class="form-control" placeholder="Full Name" name="profile.FullName">
+                                                          </div>
+
+                                                          <div class="form-group form-inline">
+                                                              <input type="text" class="form-control" placeholder="Level" name="">
+                                                              <input type="text" class="form-control" placeholder="Department" name="">
+                                                              <input type="text" class="form-control" placeholder="Faculty" name="">
+                                                          </div>
+
+                                                          <div class="form-group">
+                                                              <input type="text" class="form-control" placeholder="Address" name="profile.Address">
+                                                          </div>
+
+                                                          <div class="form-group form-inline">
+                                                              <input type="text" class="form-control" placeholder="City" name="">
+                                                              <input type="text" class="form-control" placeholder="State" name="">
+                                                          </div>
+
+                                                          <div class="form-group">
+                                                              <input type="text" class="form-control" placeholder="Facebook Url" name="">
+                                                              <input type="text" class="form-control" placeholder="Instagram Url" name="">
+                                                              <input type="text" class="form-control" placeholder="Twitter Url" name="">
+                                                          </div>
+
+                                                          <div class="form-group">
+                                                              <textarea cols="80" type="text" class="form-control" name="" hidden="AboutMe" placeholder="About Me"></textarea>
+                                                          </div>
+
+                                                          <div>
+                                                              <input type="text" class="form-control" placeholder="WhatsApp Number" name="">
+                                                          </div>
+
+                                                          <div>
+                                                              <input style="" type="submit" class="btn btn-primary" value="Create Profile">
+                                                          </div>
+                                                      </form>
+
+
+                                                  </div>
+                                              </div>
+
+
+                                              <div role="tabpanel" class="tab-pane" id="update">
+
+                                                  <div style="margin-top:20px;" id="profileEditDiv">
+
+                                                      <form action="/Member/Profile" method="post" class="tr-form">
+
+                                                          <input type="hidden" value="" name="" />
+                                                          <div class="form-group ">
+                                                              <input type="text" class="form-control" placeholder="Full Name" value="" name="">
+                                                          </div>
+
+                                                          <div class="form-group form-inline">
+                                                              <input type="text" class="form-control" placeholder="Level" value="" name="">
+                                                              <input type="text" class="form-control" placeholder="Department" value="" name="">
+                                                              <input type="text" class="form-control" placeholder="Faculty" value="" name="">
+                                                          </div>
+
+                                                          <div class="form-group">
+                                                              <input type="text" class="form-control" placeholder="Address" value="" name="">
+                                                          </div>
+
+                                                          <div class="form-group form-inline">
+                                                              <input type="text" class="form-control" placeholder="City" value="" name="">
+                                                              <input type="text" class="form-control" placeholder="State" value="" name="">
+                                                          </div>
+
+                                                          <div class="form-group">
+                                                              <input type="text" class="form-control" placeholder="Facebook Url" value="" name="">
+                                                              <input type="text" class="form-control" placeholder="Instagram Url" value="" name="">
+                                                              <input type="text" class="form-control" placeholder="Twitter Url" value="" name="">
+                                                          </div>
+
+                                                          <div class="form-group">
+                                                              <textarea cols="80" type="text" class="form-control" value="" name=""></textarea>
+                                                          </div>
+
+                                                          <div>
+                                                              <input type="text" class="form-control" placeholder="WhatsApp Number" value="">
+                                                          </div>
+
+                                                          <div>
+                                                              <input type="submit" class="btn btn-primary" value="Update Profile">
+                                                          </div>
+                                                      </form>
+
+
+                                                  </div>
+
+                                              </div>
+
+
+
+                                              <div role="tabpanel" class="tab-pane" id="categories">
+                                                  <div class="account-content">
+                                                      <form action="#" class="tr-form">
+
+                                                          <div class="title title-after" id="MyCategoriesDiv">
+
+                                                              <div style="background-color:dodgerblue; color:white;padding:10px; margin-bottom:20px;">
+                                                                  <h4><b>Your Existing Job Categories </b></h4>
+                                                              </div>
+                                                              <table id="MyCategories" class="table table-striped">
+                                                                  <thead>
+                                                                      <tr class="row" style="font-weight:bold;">
+                                                                          
+                                                                          <td class="col-md-4"> Category Name</td>
+                                                                          <td align="center" class="col-md-2"> Action</td>
+
+                                                                      </tr>
+                                                                  </thead>
+                                                                  <tbody style="color:black;">
+
+                                                                    
+                                                                          <tr class="row">
+                                                                            
+                                                                              <td class="col-md-6"><i class="fa fa-star" style="margin-right:10px;"></i>  CategoryName </td>
+                                                                              
+                                                                              <td class="col-md-2"> <button data-category-id="@item?.CategoryId" class="btn-link js-delete">Delete</button></td>
+
+                                                                          </tr>
+                                                                      
+                                                                  </tbody>
+                                                              </table>
+                                                          </div>
+
+
+                                                          <div>
+
+                                                              <div style="background-color:dodgerblue; color:white;padding:10px; margin-bottom:20px;">
+                                                                  <h4>
+                                                                      <b>Add New Job Categories</b>
+
+                                                                  </h4>
+                                                              </div>
+                                                          
+                                                                  <ul class="row" style="margin-left:30px; color:black;">
+
+                                                                    
+
+
+                                                                          <li class="list-group-item col-md-3" style="margin-right:40px;margin-bottom:20px;">
+                                                                              <div class="checkbox-inline ">
+                                                                                  <label for="categories" class="checkbox-inline">
+                                                                                      <input class="form-check-input" type="checkbox" id="" name="myCategory" value="">
+                                                                                    
+                                                                                  </label>
+                                                                              </div>
+                                                                          </li>
+                                                                      
+
+                                                                  </ul>
+                                                                  <div>
+                                                                      <input id="BtnAddCat" type="submit" class="btn btn-primary" value="Add Categories">
+                                                                  </div>
+                                                          
+                                                            
+
+
+                                                          </div>
+
+
+                                                      </form>
+
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div><!-- /.row -->
+                              <!-- container -->
+                          </div><!-- /.tr-account-->
+
+
+
+
+
+                      </div>
+                  </div>
+         </div>
+
+         <div id="JobSeeker_View">
+
+              
+                <div>
+
+
+                    <div class="page-title blueback" style="padding:30px; border-radius: 5px 5px 5px 5px;">
+                        <h3> Browse Members to Hire </h3>
+                    </div>
+
+
+                    <div class="job-topbar seperator">
+                        <span class="pull-left">6  Members</span>
+                        <ul class="nav nav-tabs job-tabs" role="tablist">
+                            <li>9 Total Job Categories</li>
+                            <li role="presentation" class="active"><a href="#four-colum" aria-controls="four-colum" role="tab" data-toggle="tab"><i class="fa fa-th" aria-hidden="true"></i></a></li>
+                            <li role="presentation"><a href="#two-column" aria-controls="two-column" role="tab" data-toggle="tab"><i class="fa fa-th-list" aria-hidden="true"></i></a></li>
+                        </ul>
+                    </div>
+
+                  
+
+
+
+                        <hr />
+
+                        <div class="banner-form"> <hr />
+
+                            <form asp-controller="Member" asp-action="BrowseUsers" method="post">
+
+                                <select id="SchoolId" name="SchName" class="form-control dropdown tr-change-dropdown round">
+                                    <option value="">Select Campus</option>
+                                    <option value="">2</option>
+                                    <option value="">3</option>
+                                    <option value="">4</option>
+                                    <option value="">5</option>
+                                  </select>
+
+                                  <input id="CategoryNam" placeholder="Type In Search Categories" name="CategoryName" class="form-control NoRound" />
+
+
+                                <!-- @Html.DropDownListFor(m => m.sch.SchoolId, new SelectList(Model.Schools.ToList(), "SchName", "SchName"), "Select Campus", new { @class = "dropdown tr-change-dropdown round" })
+
+
+
+                                @Html.TextBoxFor(m => m.category.CategoryName, "Type In Search Categories", new { @class = "form-control NoRound", id = "searchText" }) -->
+
+                              
+                                <button type="submit" class="btn btn-primary" value="Search" id="search">Search</button>
+
+                                <input type="hidden" id="IsSubscribe" name="IsSubscribe" value="Sub" />
+                            </form>
+
+                        </div><!-- /.banner-form -->
+
+
+                   
+                        <div class="alert alert-danger" role="alert">
+                            Sorry  !!! , You Don't have an Active Subscription.  <a href="@Url.Action("Subscription","Member")" class="alert-link">Proceed To Payment</a>
+                        </div>
+
+                        <input type="hidden" id="IsSubscribe" name="IsSubscribe" value="NoSub" />
+                   
+
+
+
+
+
+
+
+                    <div role="tabpanel" class="tab-pane apply-job  seperator" id="archived">
+
+
+                        <div id="Categories"></div>
+
+                    </div><!-- /.tab-pane -->
+
+
+
+
+                </div>
+
+
+
+         </div>
+
+        
+         <div id="SubscriptionManage_View" class="displayinformation">
+
+          
+                  <div >
+
+                      <div class="page-title blueback secColor whitefont">
+                          <h3 class="myTitle"> Member  Subscriptions </h3>
+                      </div>
+
+
+                      <div class="user-account">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs LR_Padding  nav-justified" role="tablist">
+                            <li role="presentation" class="active"><a href="#createsub" aria-controls="seeker" role="tab" data-toggle="tab">Subscribe</a></li>
+
+                            <li role="presentation"><a href="#viewsub" aria-controls="seeker" role="tab" data-toggle="tab"> View Subscription History</a></li>
+
+                              </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content  LR_Padding">
+
+                            <div id="createsub" role="tabpanel" class="tab-pane active">
+
+                                <div style="margin-top:20px;" id="profileCreateDiv">
+
+                                    <form class="tr-form" style="margin-top:40px;">
+                                        <!-- <script src="https://js.paystack.co/v1/inline.js"></script> -->
+                                        <button class="btn btn-primary" type="button" onclick="payWithPaystack()"> Pay Now  </button>
+                                    </form>
+
+                                   </div>
+                            </div>
+
+
+                            <div role="tabpanel" class="tab-pane" id="viewsub">
+
+                                <div class="account-content">
+                                    <form action="#" class="tr-form">
+
+                                        <div class="title title-after" id="MyCategoriesDiv">
+
+                                            <div style="background-color:#2c1106; color:white;padding:10px; margin-bottom:20px;">
+                                                <h4><b>Your Subscription History  </b></h4>
+                                            </div>
+                                            <table id="MyCategories" class="table table-striped">
+                                                <thead>
+                                                    <tr class="row" style="font-weight:bold;">
+
+                                                       
+                                                        <td class="col-md-3"> Transaction Id </td>
+                                                        <td class="col-md-2"> Amount </td>
+                                                        <td class="col-md-2"> Payment Date </td>
+                                                        <td class="col-md-2"> Expiry Date </td>
+                                                        <td class="col-md-2" align="center"> Action</td>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody style="color:black;">
+
+                                                  
+                                                    <tr class="row">
+
+                                                      
+                                                        <td class="col-md-3">  item.TransactionId </td>
+                                                        <td class="col-md-3">  item?.Amount </td>
+                                                        <td class="col-md-2">  item?.PaymentDate </td>
+                                                        <td class="col-md-2">  item?.ExpiryDate </td>
+                                                        <td class="col-md-2" align="center"> <button data-category-id="item?.Id" class="btn-link js-delete">Delete</button></td>
+
+                                                    </tr>
+                                                    
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+
+
+
+
+                                    </form>
+
+
+                                </div>
+
+                            </div>
+
+
+
+                           
+                        </div>
+                    </div>
+
+
+                    
+
+
+
+                  </div>
+
+
+
+         </div>
+
+
+       
+
+
+         
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+  
+    <script
+      src="https://code.jquery.com/jquery-2.2.3.min.js"
+      integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+
+
+    <script src="js/bootstrap.min.js"></script>
+
+    <script>
+
+         
+    
+    </script>
+
+  
+  </body>
+</html>
