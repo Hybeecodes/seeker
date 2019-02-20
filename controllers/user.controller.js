@@ -2,16 +2,32 @@ const { User, Service, Review, UserProfile }  = require('../models/index');
 const validateData = require('../helpers/validateData');
 
 const getDashboard = async(req,res) => {
-    const user = req.session.user;
-    // get current user jobs
-    // get total positive reviews
-    const positiveReviews = await getUserPositiveReviews(user._id);
-    // get total negative reviews
-    // get current user details
-    res.render('dashboard',{
-        title: "Campus Hustle -  Dashboard",
-        user
-    });
+    try {
+        const user = req.session.user;
+        // get current user jobs
+        // get total positive reviews
+        const positiveReviews = await getUserPositiveReviews(user._id);
+        // get total negative reviews
+        const negativeReviews = await getUserNegativeReviews(user._id);
+        // get current user details
+        const userDetails = await getUserDetails(user._id);
+
+        const userProfile = await getUserProfile(user._id);
+
+        let hasServices = userDetails.services.length > 0;
+        // console.log(userDetails)
+        res.render('dashboard',{
+            title: "Campus Hustle -  Dashboard",
+            user,
+            positiveReviews,
+            negativeReviews,
+            userDetails,
+            userProfile,
+            hasServices
+        });
+    } catch (error) {
+        console.log('error', error);
+    }
 }
 
 const addUserService = async(req,res) => {
@@ -83,7 +99,7 @@ const getTotalNumberOfUserPositiveReviews = async(user_id) => {
 const getUserNegativeReviews = (user_id) => {
     return new Promise(async (resolve, reject) => {
         try {
-            const userReviews = await Review.find({_reviewee: user_id, isPositive: true});
+            const userReviews = await Review.find({_reviewee: user_id, isPositive: false});
             resolve(userReviews);
         } catch (error) {
             reject(error);
@@ -93,11 +109,22 @@ const getUserNegativeReviews = (user_id) => {
 
 const getTotalNumberOfUserNegativeReviews = async(user_id) => {
     try {
-        const positiveReviews = await Review.find({_reviewee:user_id, isPositive:true}).count();
+        const positiveReviews = await Review.find({_reviewee:user_id, isPositive:false}).count();
         resolve(positiveReviews);
     } catch (error) {
         reject(error);
     }
+}
+
+const getUserProfile = async (user_id) => {
+    return new Promise (async(resolve, reject) => {
+        try {
+            const userProfile = await UserProfile.findOne({user_id});
+            resolve(userProfile);
+        } catch (error) {
+            reject(error);
+        }
+    })
 }
 
 const createUserProfile = async(body) => {

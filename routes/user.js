@@ -10,6 +10,17 @@ router.get('/', (req,res,next) => {
     res.redirect('/user/dashboard');
 })
 
+router.get('/contact',(req,res,next) => {
+    is_logged_in = (req.session.user)? true: false;
+    res.render('contact',{title: "Campus Hustle - Contact", is_logged_in});
+})
+
+router.get('/logout', (req,res) => {
+    // destroy user session
+    req.session.user = null;
+    res.redirect('/login');
+})
+
 router.get('/dashboard', getDashboard);
 
 
