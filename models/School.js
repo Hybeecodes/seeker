@@ -3,8 +3,10 @@ const { Schema } = mongoose;
 
 const SchoolSchema = new Schema({
     name: { type: String, required: [true, 'name is required'], unique: true},
-    address: { type: String, required: [true, 'address is required']},
-    isActive: { type: Boolean, default: false}
+    location: { type: String, required: [true, 'address is required']},
+    state: { type: String, required:true},
+    country: { type: String, required: true},
+    isActive: { type: Boolean, default: true}
 },
 {timestamps:true}
 );

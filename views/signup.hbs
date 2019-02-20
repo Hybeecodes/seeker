@@ -84,28 +84,18 @@
 													  <input type="radio" name="inlineRadioOptions" id="female" value="F"> Female
 													</label>
 												 
-												 </div>
+												 </div> 
 										 </div>  
 										 
-										 
-										{{!-- <div class="dropdown tr-change-dropdown">
-											<a data-toggle="dropdown" href="#" aria-expanded="false"><span class="change-text">  Your School Campus </span><i class="fa fa-angle-down"></i></a>
-											<ul class="dropdown-menu tr-change">
-												<li><a href="#">Campus 1</a></li>
-												<li><a href="#">Campus 2</a></li>
-											</ul>								
-										</div> --}}
-                                        <div class="form-group">
-                                            {{!-- <label for="school">Select Campus</label> --}}
-                                            <select name="school" id="school" class="form-control">
-                                                <option value="">Select Campus</option>
-                                                <option value="UI">University Of Ibadan</option>
-                                                <option value="OAU">Obafemi Awolowo University</option>
-                                            </select>
-                                        </div>
-										
-										
-										
+                      <div class="form-group">
+                          {{!-- <label for="school">Select Campus</label> --}}
+                          <select name="school" id="school" class="form-control">
+                            <option value="">Select Campus</option>
+                              {{#each schools as |school|}}
+                                <option value="{{school._id}}">{{school.name}}</option>
+                              {{/each}}
+                          </select>
+                      </div>
 										
 										<div class="form-group form-inline">
 											<input type="text" class="form-control" id="phone" placeholder="your Phone Number">
@@ -114,7 +104,9 @@
 											
 										</div>
 										
-									
+									<div class="form-group">
+                    <input type="text" id="username" class="form-control" placeholder="Username">
+                  </div>
 										
 									    <div class="form-group">
 										  <input type="password"  class="form-control" id="password" placeholder="enter Password"> 
@@ -177,7 +169,8 @@
                  "gender": gender,
                  "age": $('#age').val(),
                  "school": $('#school').val(),
-                 "phone": $('#phone').val()
+                 "phone": $('#phone').val(),
+                 "username": $('#username').val()
              };
              $.post('/signup',user,function(data){
                  if(data['status']){

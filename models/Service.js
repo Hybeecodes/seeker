@@ -2,12 +2,12 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const JobSchema = new Schema({
+const ServiceSchema = new Schema({
     name: { type: String, required: [true,'name is required']},
 },
 { timestamps: true}
 );
 
-const Job = mongoose.model('Job', JobSchema);
+const Service = mongoose.model('Service', ServiceSchema);
 
-module.exports = Job;
+module.exports = Service;
