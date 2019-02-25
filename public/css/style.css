@@ -162,7 +162,18 @@ h4.contact {
   margin-left: -10px;
   color: #fff;
   font-size: 2.4rem;
-  width: 30%;
+  width: 50%;
+}
+
+
+.fas {
+  border-radius: 60%;
+  background: white;
+  padding: 20px;
+  margin-left: -10px;
+  color: #2c1106;
+  font-size: 2.4rem;
+  width: 50%;
 }
 span.fa {
   font-family: inherit;

@@ -11,6 +11,10 @@
   color: #2c1106 !important;
 }
 
+.members-area:hover {
+  color: #2c1106 !important;
+}
+
 .testimonial-content {
   /* background-image: url(../images/bg/testimonial-bg2.png) !important; */
   padding: 140px 0 !important;

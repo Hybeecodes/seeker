@@ -1,12 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const {getLogin, getSignUp, authenticate, signup} = require('../controllers/guest.controller');
-const { addSchool, getSchools } = require('../controllers/school.controller');
-router.get('/', (req,res) => {
+const { addSchool, getSchools, getAllSchools } = require('../controllers/school.controller');
+const { addService, getAllServices} = require('../controllers/service.controller');
+router.get('/', async(req,res) => {
     if(req.session.user){
         return res.redirect('/user/dashboard');
     }
-    res.render('index');
+    const services = await getAllServices();
+    const schools = await getAllSchools();
+    res.render('index', {title: "Campus Hot Jobs", services, schools});
 })
 
 router.get('/contact',(req,res) => {
@@ -25,6 +28,8 @@ router.post('/signup',signup);
 router.post('/school',addSchool);
 
 router.get('/schools',getSchools);
+
+router.post('/service',addService);
 
 
 module.exports = router;

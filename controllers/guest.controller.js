@@ -1,4 +1,4 @@
-const { School, User } = require('../models/index');
+const { School, User, LastLogin } = require('../models/index');
 const validateData = require('../helpers/validateData');
 
 const bcrypt = require('bcrypt-nodejs');
@@ -19,6 +19,7 @@ const authenticate = async(req,res) => {
                     res.json({status:0,message:"Sorry, Invalid email or password"});
                 }else{
                     req.session.user = toJSON(user);
+                    await updateLastLogin(user._id);
                     res.json({status:1,message:"Login Successful, We are redirecting you..."});
                 }
                 
@@ -26,7 +27,7 @@ const authenticate = async(req,res) => {
                 res.json({status:0,message:"Sorry, Invalid email or password"});
             }
         } catch (error) {
-            res.json({status:0,message:error});
+            res.json({status:0,message:error.message});
         }
     }
 }
@@ -34,6 +35,23 @@ const authenticate = async(req,res) => {
 const getSignUp = async(req,res) => {
     const schools = await School.find();
     res.render('signup',{title: 'Campus Hustle - Signup',schools});
+}
+
+const updateLastLogin = async(user_id) => {
+    return new Promise(async(resolve,reject) => {
+        try {
+            const user = await User.findById(user_id);
+            if(user){
+                const newUser = await User.findByIdAndUpdate(user_id, {$set:{lastlogin: Date.now()}});
+                resolve(newUser);
+            }else{
+               
+            }
+        } catch (error) {
+            reject(error);
+        }
+        
+    })
 }
 
 const signup = async (req,res) => {

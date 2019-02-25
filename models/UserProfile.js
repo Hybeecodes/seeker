@@ -6,7 +6,7 @@ const UserProfileSchema = new Schema({
     user: { type: Schema.Types.ObjectId, ref:'User', required: true},
     fullname: { type: String},
     level: { type: String},
-    depatment: { type: String},
+    department: { type: String},
     faculty: { type: String},
     city: { type: String},
     state: { type: String},

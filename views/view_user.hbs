@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title> {{title}} </title>
+    <!--Stylesheets-->
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/font-awesome-4.7.0/css/font-awesome.min.css" />
+
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/mystyle.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body class="index2">
+    <!--Navbar-->
+    {{>user_nav}}
+    <!--Hero-->
+    <div class="jumbotron">
+      <div class="container">
+        <div class="profile">
+          <img src="/img/profile1.jpg" alt="profile" class="profile-img" />
+          <div class="profile-name"><p> {{user.username}} </p></div>
+        </div>
+       
+
+
+        <div class="profile">
+                <div class="profile-name"><p> {{userDetails.username}} </p></div>
+                <img src="/img/profile.jpeg" alt="profile" class="profile-img">
+              </div>
+      </div>
+    </div>
+    <!--Double columns-->
+    <div class="double-column">
+      <div class="container">
+        <div class="row">
+          <!-- <div class="col-sm-6 col-xs-12">
+            <div class="actions">
+              <button type="button" class="btn btn-primary">
+                Edit Profile
+              </button>
+              <i class="fa fa-user"></i>
+            </div>
+            <div class="actions">
+              <button type="button" class="btn btn-primary">
+                Find Job Seekers
+              </button>
+              <i class="fa fa-search"></i>
+            </div>
+            <div class="actions">
+              <button type="button" class="btn btn-primary">
+                Subscriptions
+              </button>
+              <i class="fa fa-dollar"></i>
+            </div>
+          </div> -->
+          <div class="col-sm-12">
+            <div class="row">
+              <div class="actions col-sm-4">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  style="margin:25px 0px;"
+                >
+                  <span class="fas">{{allReviews.length}}</span>
+                  <br> <br>
+                  Total job done
+                </button>
+              </div>
+
+              <div class="actions col-sm-4">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  style="margin:25px 0px;"
+                >
+                  <img
+                    src="/images/icons/fun-fact-color2.png"
+                    alt="images"
+                    class="img-responsive center-block "
+                    style="margin-bottom: 10px ;"
+                  />
+                  Positive reviews
+                </button>
+                <span class="fa">{{positiveReviews.length}}</span>
+              </div>
+
+              <div class="actions col-sm-4">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  style="margin:25px 0px;"
+                >
+                  <img
+                    src="/images/icons/fun-fact-color3.png"
+                    alt="images"
+                    class="img-responsive center-block "
+                    style="margin-bottom: 10px ;"
+                  />
+                  Negative reviews
+                </button>
+                <span class="fa">{{negativeReviews.length}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tr-profile container section-padding">
+      <div class="row">
+
+
+        <div class="col-sm-5 col-md-4">
+          <div class="title secColor whitefont">
+            <!-- <div class="icon"><img src="images/icons/2.png" alt="Icon" class="img-responsive"></div>  -->
+            <h4 class="myTitle"><b> <i class="fa fa-home fa-2x" aria-hidden="true"></i> Home  </b></h4>
+          </div>
+
+          <ul class="nav nav-tabs profile-tabs section" role="tablist">
+            <li role="presentation" class="active">
+              <a
+                href="#account-info"
+                aria-controls="account-info"
+                role="tab"
+                data-toggle="tab"
+                ><i class="fa fa-life-ring" aria-hidden="true"></i> Hire  Job
+                Seeker
+              </a>
+            </li>
+
+
+            <li role="presentation">
+                <a
+                  href="#edit-resume"
+                  aria-controls="edit-resume"
+                  role="tab"
+                  data-toggle="tab"
+                  ><span
+                    ><i class="fa fa-pencil-square-o" aria-hidden="true"></i
+                  ></span>
+                  Manage  Profile
+                </a>
+              </li>
+
+        
+
+            <!-- <li role="presentation" >
+              <a
+                href="#account-info"
+                aria-controls="account-info"
+                role="tab"
+                data-toggle="tab"
+                ><i class="fa fa-life-ring" aria-hidden="true"></i> Manage Bank
+                Account</a
+              >
+            </li> -->
+
+           
+            <li role="presentation">
+              <a
+                href="#edit-resume"
+                aria-controls="edit-resume"
+                role="tab"
+                data-toggle="tab"
+                ><span
+                  ><i class="fa fa-pencil-square-o" aria-hidden="true"></i
+                ></span>
+                Manage Subscriptions
+              </a>
+            </li>
+
+
+            <li role="presentation">
+                    <a
+                      href="#edit-resume"
+                      aria-controls="edit-resume"
+                      role="tab"
+                      data-toggle="tab"
+                      ><span
+                        ><i class="fa fa-pencil-square-o" aria-hidden="true"></i
+                      ></span>
+                      Manage Reviews
+                    </a>
+                  </li>
+
+           
+          </ul>
+        </div>
+
+        <div class="col-sm-7 col-md-8">
+
+
+         <div id="Dashboard_View">
+                    <div id="ProfileInfo" class="displayinformation">
+                      <div class="title title-after secColor whitefont">
+                      
+                        <h4 class="myTitle"><b>Profile Summary </b></h4>
+                      </div>
+
+                      <div class="media-body LR_Padding">
+                        <span id="AboutMe" class="tr-title">About Me </span>
+                          {{#if userDetails.about}}
+                            {{userDetails._about}}
+                          {{else}}
+                            <p>Sorry, we have nothing about you. Please update your profile here.</p>
+                          {{/if}}
+                        <br />
+                       
+                      </div>
+                    </div>
+
+                    <div id="JobCategoriesInfo" class="displayinformation">
+                      <div class="title title-after secColor whitefont">
+                        <!-- <div class="icon"><img src="images/icons/2.png" alt="Icon" class="img-responsive"></div>  -->
+                        <h4 class="myTitle"><b> List of what i can Do </b></h4>
+                      </div>
+                    {{#if hasServices}}
+                       <ul id="ul_Interests" class="list-inline">
+                         {{#each userDetails.services as |service|}}
+                           <li id="{{service.id}}">
+                              <button class="btn btn-primary">
+                                <i class="fa fa-star" aria-hidden="true"></i> {{service.name}}
+                              </button>
+                            </li>
+                         {{/each}}
+                        
+                      </ul>
+                    {{else}}
+                      <p>You have not selected any service yet, please update your profile</p>
+                    {{/if}}
+                     
+                    </div>
+
+                    <div id="ContactInfo" class="displayinformation">
+                                          <div class="title title-after secColor whitefont">
+                                          <!-- <div class="icon"><img src="images/icons/2.png" alt="Icon" class="img-responsive"></div>  -->
+                                          <h4 class="myTitle"><b> Contact Information </b></h4>
+                                          </div>
+                                        
+
+                                          <div id="div_Contact" class="LR_Padding">
+
+                                              <div class="LR_Padding">
+                                              
+                                                      <h4 class="contact">Address :</h4>
+                                                      {{#if userProfile.address}}
+                                                        <p >
+                                                          {{ userProfile.address }}
+                                                        </p>
+                                                      {{else}}
+                                                          <p>No address available, please update your status</p>
+                                                      {{/if}}
+                                                      
+                                              <p>
+                                                      <h4 class="contact">School :</h4>
+                                                      {{userDetails.school.name}}, {{userDetails.school.location}}
+                                                    
+                                              </p>
+
+                                              <p>
+                                                      <h4 class="contact"> Email & Phone Number:</h4>
+                                                    {{userDetails.email}} , 
+                                                    {{userDetails.phone}}
+                                              </p>
+                                              <p>
+                                                  <h4 class="contact">Contact description</h4>
+                                                 <h5 class="contact">
+                                                   <b>WhatsApp:</b>
+                                                   {{#if userProfile.whatsapp}}
+                                                    {{userProfile.whatsapp}}
+                                                  {{else}}
+                                                    Not set
+                                                  {{/if}}
+                                                    </h5>                                                 
+                                              </p>
+
+                                              </div>
+                                            
+                                            
+                                          </div>
+                                          <hr/>
+                          
+                                          <div class="updated-info LR_Padding">
+                                              <span class="pull-left">Last Login Date </span>
+                                              <span class="pull-right">{{moment userDetails.lastlogin "DD/MM/YYYY"}}</span>
+                                          </div>
+                    </div>
+
+
+                    <div id="ReviewsInfo" class="displayinformation">
+
+                                  <div class="title title-after secColor whitefont">
+                                          <!-- <div class="icon"><img src="images/icons/2.png" alt="Icon" class="img-responsive"></div>  -->
+                                          <h4 class="myTitle"><b> Top Reviews </b></h4>
+                                          </div>
+
+
+                                        
+                                          <div  id="reviews" class="LR_Padding">   
+                                            <ul class="list-inline LR_Padding"> 
+                                              {{#each allReviews as |review|}}
+                                                <li>
+                                                  <p>
+                                                        <i class="fa fa-user-circle fa-3x" aria-hidden="true"></i> 
+                                                        <b> {{review._reviewer.username}} (CSE-400level)</b><br/>
+                                                       {{review.comment}}
+                                                  </p> 
+                                                </li>  
+                                                <br>
+                                              {{/each}}
+                                              
+                                              
+                                            </ul>	
+
+                                          </div>
+                                          <hr/>
+
+                                          <div class="updated-info LR_Padding">
+                                                  <span class="pull-left">Last Login Date </span>
+                                                  <span class="pull-right">{{moment userDetails.lastlogin "DD/MM/YYYY"}}</span>
+                                              </div>
+
+                                      
+
+                  </div>
+                  <div id="ReviewsInfo" class="displayinformation">
+
+                    <div class="title title-after secColor whitefont">
+                            <!-- <div class="icon"><img src="images/icons/2.png" alt="Icon" class="img-responsive"></div>  -->
+                            <h4 class="myTitle"><b> Review User </b></h4>
+                    </div>
+
+                    <form id="reviewForm" style="padding:15px;">
+                      <div class="form-group">
+                        <label for="comment">Comment</label>
+                        <textarea name="" class="form-control" id="comment" cols="30" rows="2" placeholder="Enter Comment here..."></textarea>
+                      </div>
+
+                      <input type="hidden" name="" value="{{userDetails._id}}" id="user_id">
+                      <input type="hidden" name="" value="{{user._id}}" id="reviewer_id">
+
+                      <div class="form-group">
+                        <input type="checkbox" name="type" id="like">Like
+                        <input type="checkbox" name="type" id="dislike">Dislike
+                      </div>
+                      
+                      <button type="submit" id="submit" class="btn btn-primary">Review</button>
+                    </form>
+
+                  </div>
+         </div>
+         
+          </div>
+        </div>
+      </div>
+    </div>
+
+  
+    <script
+      src="https://code.jquery.com/jquery-2.2.3.min.js"
+      integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+
+
+    <script src="//bootstrap.min.js"></script>
+
+    <script>
+
+         $('#reviewForm').submit(function(e){
+           e.preventDefault();
+           let isPositive = false;
+            if($('#like').is(':checked')){
+                isPositive = true;
+            }else if($('#dislike').is(':checked')){
+                isPositive = false;
+            }
+           const review = {
+             "_reviewee": $('#user_id').val(),
+             "comment": $('#comment').val(),
+             "_reviewer": $('#reviewer_id').val(),
+              "isPositive": isPositive
+           };
+           $.post('/user/review',review,function(data){
+             console.log(data)
+                if(data['status']){
+                  
+                }else{
+                  
+                }
+            })
+         })
+    
+    </script>
+
+  
+  </body>
+</html>

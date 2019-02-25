@@ -71,21 +71,17 @@
 								
 									<form action="#" id="signupForm" class="tr-form">
                                         <div class="alert"></div>
-										<div class="form-group form-inline">
-										
-											 <input type="text"  class="form-control" id="firstname"  placeholder="First Name">   
-											  <input type="text" class="form-control" id="lastname" placeholder="Last Name"> 
-												 <div class=" radio-inline"> 
-												   Gender
-												  <label class="radio-inline">
-													  <input type="radio" name="inlineRadioOptions" id="male" value="M"> Male
-													</label>
-													<label class="radio-inline">
-													  <input type="radio" name="inlineRadioOptions" id="female" value="F"> Female
-													</label>
-												 
-												 </div> 
+										<div class="row">
+                      <div class="form-group col-md-6">
+                        <input type="text"  class="form-control" id="firstname"  placeholder="First Name"> 
+                      </div>
+
+                      <div class="form-group col-md-6">
+                        <input type="text" class="form-control" id="lastname" placeholder="Last Name"> 
+                      </div>
+
 										 </div>  
+                     
 										 
                       <div class="form-group">
                           {{!-- <label for="school">Select Campus</label> --}}
@@ -97,26 +93,47 @@
                           </select>
                       </div>
 										
-										<div class="form-group form-inline">
-											<input type="text" class="form-control" id="phone" placeholder="your Phone Number">
-											<input type="email" class="form-control" id="email" placeholder="your Email">
-											<input type="number" class="form-control" id="age" placeholder="your Age">
+										<div class="row">
+                      <div class="form-group col-md-6">
+                        <input type="text" class="form-control" id="phone" placeholder="your Phone Number">
+                      </div>
 											
+                      <div class="form-group col-md-6">
+                        <input type="email" class="form-control" id="email" placeholder="your Email">
+                      </div>
 										</div>
+                    <div class="row">
+                      <div class="form-group col-md-6">
+                        <input type="number" class="form-control" id="age" placeholder="your Age">
+                      </div>
+                      <div class="form-group col-md-6">
+                        <div class=" radio-inline"> 
+												   Gender
+												  <label class="radio-inline">
+													  <input type="radio" name="inlineRadioOptions" id="male" value="M"> Male
+													</label>
+													<label class="radio-inline">
+													  <input type="radio" name="inlineRadioOptions" id="female" value="F"> Female
+													</label>
+												 
+												 </div> 
+                      </div>
+                    </div>
+                    
 										
 									<div class="form-group">
                     <input type="text" id="username" class="form-control" placeholder="Username">
                   </div>
+										<div class="row">
+                      <div class="form-group col-md-6">
+										    <input type="password"  class="form-control" id="password" placeholder="enter Password"> 
+										  </div>
 										
-									    <div class="form-group">
-										  <input type="password"  class="form-control" id="password" placeholder="enter Password"> 
-										
+										 <div class="form-group col-md-6">
+										  <input type="password" class="form-control" id="confirm_password" placeholder="confirm Password"> 
 										</div>
-										
-										 <div class="form-group">
-										 
-										 <input type="password" class="form-control" id="confirm_password" placeholder="confirm Password"> 
-										</div>
+                    </div>
+									    
 								
 										<!-- /.category-change -->
 										

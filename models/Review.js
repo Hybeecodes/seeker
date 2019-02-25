@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 
 const ReviewSchema = new Schema({
     _reviewer: { type: Schema.Types.ObjectId,ref:'User', required:true},
-    _reviwee: { type:  Schema.Types.ObjectId, ref: 'User', required:true},
+    _reviewee: { type:  Schema.Types.ObjectId, ref: 'User', required:true},
     comment: { type: String, required:true},
     isPositive: { type: Boolean, required: true}
 },

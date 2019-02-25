@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>{{title}}</title>
+    <!--Stylesheets-->
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/font-awesome-4.7.0/css/font-awesome.min.css" />
+
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/mystyle.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+  </head>
+  <body class="index">
+    <!--Navbar--> 
+    {{> user_nav}}
+    <!--Hero-->
+    <div class="jumbotron">
+      <div class="container">
+        <div class="profile">
+          <img src="/img/profile1.jpg" alt="profile" class="profile-img" />
+          <div class="profile-name"><p>{{user.username}}</p></div>
+        </div>
+        <button type="button" id="upload" style="width:25%;" class="btn btn-warning">
+          Upload Picture
+        </button>
+        <input type="file" name="profile_pic" id="profile_pic" style="display:none;">
+      </div>
+    </div>
+    <!--Double columns-->
+    <div class="double-column">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="row">
+              <div class="actions col-sm-4">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  style="margin:25px 0px;"
+                >
+                  <img
+                    src="/images/icons/fun-fact-color1.png"
+                    alt="images"
+                    class="img-responsive center-block "
+                    style="margin-bottom: 10px ;"
+                  />
+                  Total job done
+                </button>
+                <span class="fa"> {{allReviews.length}} </span>
+              </div>
+
+              <div class="actions col-sm-4">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  style="margin:25px 0px;"
+                >
+                  <img
+                    src="/images/icons/fun-fact-color2.png"
+                    alt="images"
+                    class="img-responsive center-block "
+                    style="margin-bottom: 10px ;"
+                  />
+                  Positive reviews
+                </button>
+                <span class="fa">{{positiveReviews.length}}</span>
+              </div>
+
+              <div class="actions col-sm-4">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  style="margin:25px 0px;"
+                >
+                  <img
+                    src="/images/icons/fun-fact-color3.png"
+                    alt="images"
+                    class="img-responsive center-block "
+                    style="margin-bottom: 10px ;"
+                  />
+                  Negative reviews
+                </button>
+                <span class="fa">{{negativeReviews.length}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tr-profile container section-padding">
+      <div class="row">
+
+
+        <div class="col-sm-5 col-md-4">
+          <div class="title secColor whitefont">
+            <!-- <div class="icon"><img src="images/icons/2.png" alt="Icon" class="img-responsive"></div>  -->
+            <h4 class="myTitle"><b> <i class="fa fa-home fa-2x" aria-hidden="true"></i> Home  </b></h4>
+          </div>
+
+          <ul class="nav nav-tabs profile-tabs section" role="tablist">
+            <li role="presentation" class="active">
+              <a
+                href="#account-info"
+                aria-controls="account-info"
+                role="tab"
+                data-toggle="tab"
+                ><i class="fa fa-life-ring" aria-hidden="true"></i> Hire  Job
+                Seeker
+              </a>
+            </li>
+
+
+            <li role="presentation">
+                <a
+                  href="#edit-resume"
+                  aria-controls="edit-resume"
+                  role="tab"
+                  data-toggle="tab"
+                  ><span
+                    ><i class="fa fa-pencil-square-o" aria-hidden="true"></i
+                  ></span>
+                  Manage  Profile
+                </a>
+              </li>
+           
+            <li role="presentation">
+              <a
+                href="#edit-resume"
+                aria-controls="edit-resume"
+                role="tab"
+                data-toggle="tab"
+                ><span
+                  ><i class="fa fa-pencil-square-o" aria-hidden="true"></i
+                ></span>
+                Manage Subscriptions
+              </a>
+            </li>
+
+
+            <li role="presentation">
+                    <a
+                      href="#edit-resume"
+                      aria-controls="edit-resume"
+                      role="tab"
+                      data-toggle="tab"
+                      ><span
+                        ><i class="fa fa-pencil-square-o" aria-hidden="true"></i
+                      ></span>
+                      Manage Reviews
+                    </a>
+                  </li>
+
+           
+          </ul>
+        </div>
+
+        <div class="col-sm-7 col-md-8">
+            <div class="col-sm-6 col-md-12 seperator"> 
+					
+					
+					
+					
+					<div class="title secColor whitefont">
+                         <div class="myTitle page-title ">
+                            <h3>Find By Job Categories</h3>
+                        </div>	
+                    </div>
+			   
+
+
+				<div class="job-topbar seperator">
+				<span class="pull-left">Filter jobs by</span>
+				<ul class="nav nav-tabs job-tabs" role="tablist">
+					<li>{{search.length}} Total Result(s)</li>
+					<li role="presentation" class="active"><a href="#four-colum" aria-controls="four-colum" role="tab" data-toggle="tab"><i class="fa fa-th" aria-hidden="true"></i></a></li>
+					<li role="presentation"><a href="#two-column" aria-controls="two-column" role="tab" data-toggle="tab"><i class="fa fa-th-list" aria-hidden="true"></i></a></li>
+				</ul>				
+			    </div>
+							
+				
+				<div class="banner-form">
+					<form action="/user/search" method="get">
+
+                <select id="SchoolId" name="SchName" class="form-control dropdown tr-change-dropdown round">
+                    <option value="">Select Campus</option>
+                    {{#each schools as |school|}}
+                      <option value="{{school._id}}">{{school.name}}</option>
+                    {{/each}}
+                  </select>
+
+                  <input id="services" list="serviceList" placeholder="Type In Search Categories" name="CategoryName" class="form-control NoRound" />
+                  <datalist id="serviceList">
+                    {{#each allServices as |service|}}
+                      <option value="{{service.name}}">
+                    {{/each}}
+                  </datalist>
+
+                <!-- @Html.DropDownListFor(m => m.sch.SchoolId, new SelectList(Model.Schools.ToList(), "SchName", "SchName"), "Select Campus", new { @class = "dropdown tr-change-dropdown round" })
+
+
+
+                @Html.TextBoxFor(m => m.category.CategoryName, "Type In Search Categories", new { @class = "form-control NoRound", id = "searchText" }) -->
+
+              
+                <button type="submit" class="btn btn-primary" value="Search" id="search">Search</button>
+
+                                {{!-- <input type="hidden" id="IsSubscribe" name="IsSubscribe" value="Sub" /> --}}
+                          </form>
+				</div><!-- /.banner-form -->
+									
+            <div role="tabpanel" class="tab-pane apply-job  seperator" id="archived">
+              {{#each search as |userResult|}}
+                <div class="job-item">
+                  <div class="job-info">
+                    <div class="left-content">
+                      <div class="clearfix">
+                        <div class="company-logo">
+                          <img src="/images/job/1.png" alt="images" class="img-responsive">
+                        </div>
+                        <span class="tr-title">
+                          <a href="job-details.html"> {{userResult.firstname}} {{userResult.lastname}} </a><span><a href="#">Loop</a></span>
+                        </span>
+                        <span><a href="#" class="btn btn-primary">{{userResult.username}}</a></span>
+                      </div>
+                      <ul class="tr-list job-meta">
+                        <li><span><i class="fa fa-map-signs" aria-hidden="true"></i></span> {{userResult.gender}} </li>
+                        <li><span><i class="fa fa-briefcase" aria-hidden="true"></i></span> {{userResult.school.name}} </li>
+                        <li><span><i class="fa fa-money" aria-hidden="true"></i></span>  {{userResult.age}}</li>
+                      </ul>										
+                    </div>
+                    <div class="right-content">
+                      <a href="/user/profile/{{userResult._id}}" class="btn button-cancle">View User</a>
+                      <span class="applied">Last Login: {{moment userResult.lastlogin "YY, MMM dd"}}</span>
+                    </div>
+                  </div>
+                </div>
+              {{/each}}
+				
+						</div><!-- /.tab-pane -->
+					
+					
+					       
+					
+					</div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  
+    <script
+      src="https://code.jquery.com/jquery-2.2.3.min.js"
+      integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <script>
+        $('#upload').click(function(){
+          $('#profile_pic').trigger('click');
+        })
+        $('#services').select2({
+          placeholder: "Select Services you offer",
+          width: "100%"
+        })
+
+        $('.profileForm').submit(function(e){
+          e.preventDefault();
+          const user = {
+                 "fullname": $('#fullname').val(),
+                 "level": $('#level').val(),
+                 "department": $('#department').val(),
+                 "faculty": $('#faculty').val(),
+                 "address": $('#address').val(),
+                 "city": $('#city').val(),
+                 "state": $('#state').val(),
+                 "about": $('#about').val(),
+                 "whatsapp": $('#whatsapp').val(),
+                 "user" : $('#UserId').val()
+             };
+        
+          $.post('/user/profile',user,function(data){
+            console.log(data);
+              if(data['status']){
+                
+              }else{
+               
+                $('#submit').attr('disable',false).text('Sign Up');
+              }
+             })
+        })
+
+        $('#addServices').click(function(e){
+          e.preventDefault();
+          const services = $('#services').val();
+          if(services && services.length > 0){
+            $.post('/user/add_services',{
+            "services[]": services,
+            "user_id" : $('#UserId').val()
+            }, function(data){
+              if(data['status']){
+                swal('Great!','Your Services have been updated successfully','success').then(()=> {
+                  location.reload(true);
+                });
+              }else{
+                swal('huh!',data['message'],'error');
+              }
+            })
+          }else{
+            swal('huh!','No service was selected','error');
+          }
+          
+        });
+
+        function removeService(btn, service_id){
+          $.post('/user/remove_service',{
+            "user_id" : $('#UserId').val(),
+            service_id
+          }, function(data){
+            if(data['status']){
+              $(btn).parent().parent().fadeOut('slow');
+              $(`#${service_id}`).fadeOut('slow');
+            }else{
+              swal(data['message']);
+            }
+          })
+        }
+         
+    
+    </script>
+
+  
+  </body>
+</html>

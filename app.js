@@ -7,6 +7,10 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
 
+var Handlebars = require("handlebars");
+var MomentHandler = require("handlebars.moment");
+MomentHandler.registerHelpers(Handlebars);
+
 const indexRouter = require('./routes/index');
 const userRouter = require('./routes/user');
 
@@ -22,6 +26,7 @@ app.engine('hbs', exphbs({
     layoutsDir: __dirname + '/views/pages/',
     partialsDir: __dirname + '/views/partials/'
 }));
+// app.locals.moment = require('moment');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

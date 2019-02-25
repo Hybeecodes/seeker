@@ -7,7 +7,7 @@
     <meta name="author" content="Theme Region">
    	<meta name="description" content="">
 
-    <title>Campus Hot Jobs</title>
+    <title> {{title}} </title>
 
    	<!-- CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css" >
@@ -47,19 +47,18 @@
 		<div class="container">
 			<div class="banner-content text-center">
 				<h1>The Best Platform to find Menial Jobs on your Campus</h1>
-				<h2>We have over 35 job Categories you can Apply for</h2>
+				<h2>We have over {{services.length}} job Categories you can Apply for</h2>
 				<br/>
 				<!-- <button type="submit" class="btn btn-primary" value="Search">Find Job Now </button> -->
 				<div class="banner-form">
-					<form action="#">
+					<form action="/user/search">
 						<input type="text" class="form-control" placeholder=" Search Job Categories">
 						<div class="dropdown tr-change-dropdown">
 							<a data-toggle="dropdown" href="#" aria-expanded="false"><span class="change-text">Your School Campus </span><i class="fa fa-angle-down"></i></a>
 							<ul class="dropdown-menu tr-change">
-								<li><a href="#">Location 0 </a></li>
-								<li><a href="#">Location 1</a></li>
-								<li><a href="#">Location 2</a></li>
-								<li><a href="#">Location 3</a></li>
+								{{#each schools as |school|}}
+									<li><a href="#">{{school.name}} </a></li>
+								{{/each}}
 							</ul>								
 						</div><!-- /.category-change -->
 						<button type="submit" class="btn btn-primary" value="Search">Find Now </button>
@@ -341,16 +340,6 @@
 			</div>
 		</div><!-- /.container -->
 	</div><!-- /.tr-testimonial -->
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	

@@ -15,8 +15,7 @@
 				<div class="navbar-left">
 					<div class="collapse navbar-collapse" id="navbar-collapse">
 						<ul class="nav navbar-nav">
-							<li class="tr-dropdown active"><a href="/">Home</a></li>
-							<li><a href="/contact">Contact</a></li>									
+															
 						</ul>
 					</div>
 				</div><!-- /.navbar-left -->
@@ -24,18 +23,19 @@
 				<div class="navbar-right">			
 					<div class="dropdown tr-change-dropdown">
 						<i class="fa fa-globe"></i> 
-						<a data-toggle="dropdown" href="#" aria-expanded="false"><span class="change-text">United Kingdom</span>
+						<a data-toggle="dropdown" href="#" aria-expanded="false"><span class="change-text">Campus</span>
 							<i class="fa fa-angle-down"></i></a>
 						<ul class="dropdown-menu tr-change tr-list">
-							<li><a href="#">United Kingdom</a></li>
-							<li><a href="#">United States</a></li>
-							<li><a href="#">China</a></li>
-							<li><a href="#">Russia</a></li>
+							{{#each schools as |school|}}
+								<li><a href="#"> {{school.name}} </a></li>
+							{{/each}}
 						</ul>								
 					</div><!-- /.language-dropdown -->					
 					<ul class="sign-in tr-list">
-						<li><a href="/login">Login</a></li>
-						<li><a href="/signup">Register</a></li>
+						<li style="padding-right:10px;"><a href="/">Home</a></li>
+						<li><a href="/contact">Contact</a></li>	
+						<li><a class="btn btn-primary members-area" style="color:white" href="/login">Members Area</a></li>
+						
 					</ul><!-- /.sign-in -->					
 				</div><!-- /.nav-right -->
 			</div><!-- /.container -->

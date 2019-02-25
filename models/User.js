@@ -13,7 +13,8 @@ const UserSchema = new Schema({
     age: { type: Number, required: [true, 'Age is required']},
     password: { type: String, required:[true, "Password is required"]},
     school: { type: Schema.Types.ObjectId, ref:"School",required:true},
-    isSuspended: { type: Boolean, default: false}
+    isSuspended: { type: Boolean, default: false},
+    lastlogin: { type: Date, required: true, default: Date.now()}
 },
 {timestamps: true}
 );

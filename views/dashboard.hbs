@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/css/main.css" />
     <link rel="stylesheet" href="/css/mystyle.css" />
     <link rel="stylesheet" href="/css/style.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
   </head>
   <body class="index">
     <!--Navbar--> 
@@ -49,7 +50,7 @@
                   />
                   Total job done
                 </button>
-                <span class="fa">1</span>
+                <span class="fa"> {{allReviews.length}} </span>
               </div>
 
               <div class="actions col-sm-4">
@@ -184,8 +185,8 @@
 
                       <div class="media-body LR_Padding">
                         <span id="AboutMe" class="tr-title">About Me </span>
-                          {{#if userDetails.about}}
-                            {{userDetails._about}}
+                          {{#if userProfile._about}}
+                            {{userProfile._about}}
                           {{else}}
                             <p>Sorry, we have nothing about you. Please update your profile here.</p>
                           {{/if}}
@@ -202,7 +203,7 @@
                     {{#if hasServices}}
                        <ul id="ul_Interests" class="list-inline">
                          {{#each userDetails.services as |service|}}
-                           <li>
+                           <li id="{{service.id}}">
                               <button class="btn btn-primary">
                                 <i class="fa fa-star" aria-hidden="true"></i> {{service.name}}
                               </button>
@@ -229,7 +230,7 @@
                                               
                                                       <h4 class="contact">Address :</h4>
                                                       {{#if userProfile.address}}
-                                                        <p >
+                                                        <p>
                                                           {{ userProfile.address }}
                                                         </p>
                                                       {{else}}
@@ -267,7 +268,7 @@
                           
                                           <div class="updated-info LR_Padding">
                                               <span class="pull-left">Last Login Date </span>
-                                              <span class="pull-right">24/4/2017</span>
+                                              <span class="pull-right">{{moment userDetails.lastlogin "DD/MM/YYYY"}}</span>
                                           </div>
                     </div>
 
@@ -276,63 +277,33 @@
 
                                   <div class="title title-after secColor whitefont">
                                           <!-- <div class="icon"><img src="images/icons/2.png" alt="Icon" class="img-responsive"></div>  -->
-                                          <h4 class="myTitle"><b> Top 10 Reviews </b></h4>
+                                          <h4 class="myTitle"><b> Top Reviews </b></h4>
                                           </div>
 
 
                                         
                                           <div  id="reviews" class="LR_Padding">   
-                                              <ul class="list-inline LR_Padding"> 
-
-
-                                            <li>
-                                                    <p>
-                                                          <i class="fa fa-user-circle fa-3x" aria-hidden="true"></i> 
-                                                          <b> Folasade (CSE-400level)</b><br/>
-                                                          I was really impressed with her services, she handled my laundry just the way i wanted . i give her 5 stars
-                                                    </p>  
-                                            </li>
-
-                                            <li>
+                                            <ul class="list-inline LR_Padding"> 
+                                              {{#each allReviews as |review|}}
+                                                <li>
                                                   <p>
-                                                      <i class="fa fa-user-circle fa-3x" aria-hidden="true"></i> 
-                                                      <b> Folasade (CSE-400level)</b><br/>
-                                                      I was really impressed with her services, she handled my laundry just the way i wanted . i give her 5 stars
-                                                  </p>  
-                                        </li>
-
-                                        <li>
-                                              <p>
-                                                  <i class="fa fa-user-circle fa-3x" aria-hidden="true"></i> 
-                                                  <b> Folasade (CSE-400level)</b><br/>
-                                                  I was really impressed with her services, she handled my laundry just the way i wanted . i give her 5 stars
-                                              </p>  
-                                    </li>
-
-                                    <li>
-                                          <p>
-                                              <i class="fa fa-user-circle fa-3x" aria-hidden="true"></i> 
-                                              <b> Folasade (CSE-400level)</b><br/>
-                                              I was really impressed with her services, she handled my laundry just the way i wanted . i give her 5 stars
-                                          </p>  
-                                </li>
-
-                                <li>
-                                      <p>
-                                          <i class="fa fa-user-circle fa-3x" aria-hidden="true"></i> 
-                                          <b> Folasade (CSE-400level)</b><br/>
-                                          I was really impressed with her services, she handled my laundry just the way i wanted . i give her 5 stars
-                                      </p>  
-                            </li>
-                                                
-                                          </ul>	
+                                                        <i class="fa fa-user-circle fa-3x" aria-hidden="true"></i> 
+                                                        <b> {{review._reviewer.username}} (CSE-400level)</b><br/>
+                                                       {{review.comment}}
+                                                  </p> 
+                                                </li>  
+                                                <br>
+                                              {{/each}}
+                                              
+                                              
+                                            </ul>	
 
                                           </div>
                                           <hr/>
 
                                           <div class="updated-info LR_Padding">
                                                   <span class="pull-left">Last Login Date </span>
-                                                  <span class="pull-right">24/4/2017</span>
+                                                  <span class="pull-right">{{moment userDetails.lastlogin "DD/MM/YYYY"}}</span>
                                               </div>
 
                                       
@@ -369,9 +340,9 @@
                                       <div class="user-account">
                                           <!-- Nav tabs -->
                                           <ul class="nav nav-tabs  nav-justified" role="tablist">
-                                              <li role="presentation" class="active"><a href="#create" aria-controls="seeker" role="tab" data-toggle="tab">Create Profile</a></li>
+                                              <li role="presentation" class="active"><a href="#create" aria-controls="seeker" role="tab" data-toggle="tab">Update Profile</a></li>
 
-                                              <li role="presentation"><a href="#update" aria-controls="seeker" role="tab" data-toggle="tab"> Update Profile</a></li>
+                                              {{!-- <li role="presentation"><a href="#update" aria-controls="seeker" role="tab" data-toggle="tab"> Update Profile</a></li> --}}
 
                                               <li role="presentation"><a href="#categories" aria-controls="employers" role="tab" data-toggle="tab">Update Job Categories</a></li>
                                           </ul>
@@ -382,50 +353,48 @@
                                               <div id="create" role="tabpanel" class="tab-pane active">
                                                   <div style="margin-top:20px;" id="profileCreateDiv">
 
-                                                      <input type="hidden" id="UserId" value="">
+                                                      <input type="hidden" id="UserId" value="{{userDetails._id}}">
 
 
-                                                      <form action="/Member/Profile" method="post" class="tr-form">
+                                                      <form action="/user/Profile" method="post" class="profileForm tr-form">
 
                                                           <div class="form-group ">
-                                                              <input type="text" class="form-control" placeholder="Full Name" name="profile.FullName">
+                                                              <input type="text" class="form-control" value="{{ userProfile.fullname }}" placeholder="Full Name" name="profile.FullName" id="fullname">
                                                           </div>
 
                                                           <div class="form-group form-inline">
-                                                              <input type="text" class="form-control" placeholder="Level" name="">
-                                                              <input type="text" class="form-control" placeholder="Department" name="">
-                                                              <input type="text" class="form-control" placeholder="Faculty" name="">
+                                                              <input type="text" class="form-control" value="{{ userProfile.level }}" id="level" placeholder="Level" name="">
+                                                              <input type="text" class="form-control" value="{{ userProfile.department }}" id="department" placeholder="Department" name="">
+                                                              <input type="text" class="form-control" value="{{ userProfile.faculty }}" id="faculty" placeholder="Faculty" name="">
                                                           </div>
 
                                                           <div class="form-group">
-                                                              <input type="text" class="form-control" placeholder="Address" name="profile.Address">
+                                                              <input type="text" class="form-control" value="{{ userProfile.address }}" id="address" placeholder="Address" name="profile.Address">
                                                           </div>
 
                                                           <div class="form-group form-inline">
-                                                              <input type="text" class="form-control" placeholder="City" name="">
-                                                              <input type="text" class="form-control" placeholder="State" name="">
+                                                              <input type="text" class="form-control" id="city" value="{{ userProfile.city }}" placeholder="City" name="">
+                                                              <input type="text" class="form-control" id="state" value="{{ userProfile.state }}" placeholder="State" name="">
                                                           </div>
 
-                                                          <div class="form-group">
+                                                          {{!-- <div class="form-group">
                                                               <input type="text" class="form-control" placeholder="Facebook Url" name="">
                                                               <input type="text" class="form-control" placeholder="Instagram Url" name="">
                                                               <input type="text" class="form-control" placeholder="Twitter Url" name="">
-                                                          </div>
+                                                          </div> --}}
 
                                                           <div class="form-group">
-                                                              <textarea cols="80" type="text" class="form-control" name="" hidden="AboutMe" placeholder="About Me"></textarea>
+                                                              <textarea cols="80" type="text" class="form-control" id="about" name="" hidden="AboutMe" placeholder="About Me">{{ userProfile._about }}</textarea>
                                                           </div>
 
                                                           <div>
-                                                              <input type="text" class="form-control" placeholder="WhatsApp Number" name="">
+                                                              <input type="text" class="form-control" value="{{ userProfile.whatsapp }}" id="whatsapp" placeholder="WhatsApp Number" name="">
                                                           </div>
 
                                                           <div>
-                                                              <input style="" type="submit" class="btn btn-primary" value="Create Profile">
+                                                              <button type="submit" id="submit" class="btn btn-primary">Update Profile</button>
                                                           </div>
                                                       </form>
-
-
                                                   </div>
                                               </div>
 
@@ -491,7 +460,8 @@
                                                               <div style="background-color:dodgerblue; color:white;padding:10px; margin-bottom:20px;">
                                                                   <h4><b>Your Existing Job Categories </b></h4>
                                                               </div>
-                                                              <table id="MyCategories" class="table table-striped">
+                                                              {{#if hasServices}}
+                                                                <table id="MyCategories" class="table table-striped">
                                                                   <thead>
                                                                       <tr class="row" style="font-weight:bold;">
                                                                           
@@ -501,18 +471,20 @@
                                                                       </tr>
                                                                   </thead>
                                                                   <tbody style="color:black;">
-
-                                                                    
-                                                                          <tr class="row">
+                                                                    {{#each services as |service|}}
+                                                                      <tr class="row">
+                                                                            <td class="col-md-6"><i class="fa fa-star" style="margin-right:10px;"></i> {{service.name}} </td>
                                                                             
-                                                                              <td class="col-md-6"><i class="fa fa-star" style="margin-right:10px;"></i>  CategoryName </td>
-                                                                              
-                                                                              <td class="col-md-2"> <button data-category-id="@item?.CategoryId" class="btn-link js-delete">Delete</button></td>
-
-                                                                          </tr>
-                                                                      
+                                                                            <td class="col-md-2"> <button type="button" onclick="removeService(this,'{{service.id}}')" class="btn-link js-delete">Delete</button></td>
+                                                                        </tr>
+                                                                    {{/each}}
+                                                                          
                                                                   </tbody>
                                                               </table>
+                                                              {{else}}
+                                                                <p>No service has been added yet, update your profile</p>
+                                                              {{/if}}
+                                                              
                                                           </div>
 
 
@@ -524,31 +496,19 @@
 
                                                                   </h4>
                                                               </div>
-                                                          
-                                                                  <ul class="row" style="margin-left:30px; color:black;">
-
-                                                                    
-
-
-                                                                          <li class="list-group-item col-md-3" style="margin-right:40px;margin-bottom:20px;">
-                                                                              <div class="checkbox-inline ">
-                                                                                  <label for="categories" class="checkbox-inline">
-                                                                                      <input class="form-check-input" type="checkbox" id="" name="myCategory" value="">
-                                                                                    
-                                                                                  </label>
-                                                                              </div>
-                                                                          </li>
-                                                                      
-
-                                                                  </ul>
-                                                                  <div>
-                                                                      <input id="BtnAddCat" type="submit" class="btn btn-primary" value="Add Categories">
+                                                                    <div class="form-group">
+                                                                            <select name="services[]" id="services" multiple="multiple">
+                                                                              <option value=""></option>
+                                                                              {{#each allServices as |service|}}
+                                                                                <option value="{{service.id}}">{{service.name}}</option>
+                                                                              {{/each}}                       
+                                                                            </select>
+                                                                    </div>
+                                                                  <div class="form-group">
+                                                                      <input id="addServices" type="submit" class="btn btn-primary" value="Add Categories">
                                                                   </div>
                                                           
-                                                            
-
-
-                                                          </div>
+                                                              </div>
 
 
                                                       </form>
@@ -582,9 +542,9 @@
 
 
                     <div class="job-topbar seperator">
-                        <span class="pull-left">6  Members</span>
+                        <span class="pull-left">{{userCount}}  Members</span>
                         <ul class="nav nav-tabs job-tabs" role="tablist">
-                            <li>9 Total Job Categories</li>
+                            <li>{{serviceCount}} Total Job Categories</li>
                             <li role="presentation" class="active"><a href="#four-colum" aria-controls="four-colum" role="tab" data-toggle="tab"><i class="fa fa-th" aria-hidden="true"></i></a></li>
                             <li role="presentation"><a href="#two-column" aria-controls="two-column" role="tab" data-toggle="tab"><i class="fa fa-th-list" aria-hidden="true"></i></a></li>
                         </ul>
@@ -598,18 +558,21 @@
 
                         <div class="banner-form"> <hr />
 
-                            <form asp-controller="Member" asp-action="BrowseUsers" method="post">
+                            <form action="/user/search" method="get">
 
                                 <select id="SchoolId" name="SchName" class="form-control dropdown tr-change-dropdown round">
                                     <option value="">Select Campus</option>
-                                    <option value="">2</option>
-                                    <option value="">3</option>
-                                    <option value="">4</option>
-                                    <option value="">5</option>
+                                    {{#each schools as |school|}}
+                                      <option value="{{school._id}}">{{school.name}}</option>
+                                    {{/each}}
                                   </select>
 
-                                  <input id="CategoryNam" placeholder="Type In Search Categories" name="CategoryName" class="form-control NoRound" />
-
+                                  <input id="services" list="serviceList" placeholder="Type In Search Categories" name="CategoryName" class="form-control NoRound" />
+                                  <datalist id="serviceList">
+                                    {{#each allServices as |service|}}
+                                      <option value="{{service.name}}">
+                                    {{/each}}
+                                  </datalist>
 
                                 <!-- @Html.DropDownListFor(m => m.sch.SchoolId, new SelectList(Model.Schools.ToList(), "SchName", "SchName"), "Select Campus", new { @class = "dropdown tr-change-dropdown round" })
 
@@ -620,8 +583,8 @@
                               
                                 <button type="submit" class="btn btn-primary" value="Search" id="search">Search</button>
 
-                                <input type="hidden" id="IsSubscribe" name="IsSubscribe" value="Sub" />
-                            </form>
+                                {{!-- <input type="hidden" id="IsSubscribe" name="IsSubscribe" value="Sub" /> --}}
+                          </form>
 
                         </div><!-- /.banner-form -->
 
@@ -633,10 +596,6 @@
 
                         <input type="hidden" id="IsSubscribe" name="IsSubscribe" value="NoSub" />
                    
-
-
-
-
 
 
 
@@ -772,8 +731,6 @@
     </div>
 
 
-
-
   
     <script
       src="https://code.jquery.com/jquery-2.2.3.min.js"
@@ -783,13 +740,81 @@
 
     <script src="https://js.paystack.co/v1/inline.js"></script>
 
-
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <script>
         $('#upload').click(function(){
           $('#profile_pic').trigger('click');
         })
+        $('#services').select2({
+          placeholder: "Select Services you offer",
+          width: "100%"
+        })
+
+        $('.profileForm').submit(function(e){
+          e.preventDefault();
+          const user = {
+                 "fullname": $('#fullname').val(),
+                 "level": $('#level').val(),
+                 "department": $('#department').val(),
+                 "faculty": $('#faculty').val(),
+                 "address": $('#address').val(),
+                 "city": $('#city').val(),
+                 "state": $('#state').val(),
+                 "_about": $('#about').val(),
+                 "whatsapp": $('#whatsapp').val(),
+                 "user" : $('#UserId').val()
+             };
+        
+          $.post('/user/profile',user,function(data){
+            console.log(data);
+                if(data['status']){
+                  swal('Great!','Profile updated successfully','success').then(()=> {
+                    location.reload(true);
+                  });
+                }else{
+                  swal('huh!',data['message'],'error');
+                }
+              
+             })
+        })
+
+        $('#addServices').click(function(e){
+          e.preventDefault();
+          const services = $('#services').val();
+          if(services && services.length > 0){
+            $.post('/user/add_services',{
+            "services[]": services,
+            "user_id" : $('#UserId').val()
+            }, function(data){
+              if(data['status']){
+                swal('Great!','Your Services have been updated successfully','success').then(()=> {
+                  location.reload(true);
+                });
+              }else{
+                swal('huh!',data['message'],'error');
+              }
+            })
+          }else{
+            swal('huh!','No service was selected','error');
+          }
+          
+        });
+
+        function removeService(btn, service_id){
+          $.post('/user/remove_service',{
+            "user_id" : $('#UserId').val(),
+            service_id
+          }, function(data){
+            if(data['status']){
+              $(btn).parent().parent().fadeOut('slow');
+              $(`#${service_id}`).fadeOut('slow');
+            }else{
+              swal(data['message']);
+            }
+          })
+        }
          
     
     </script>

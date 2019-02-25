@@ -22,7 +22,19 @@ const getSchools = async (req,res) => {
     res.json({schools});
 }
 
+const getAllSchools = async() => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const schools = await School.find();
+            resolve(schools); 
+        } catch (error) {
+            reject(error);
+        }
+    })
+}
+
 module.exports = {
     addSchool,
-    getSchools
+    getSchools,
+    getAllSchools
 }

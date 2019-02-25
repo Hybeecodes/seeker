@@ -3,9 +3,10 @@ const validateData = require('../helpers/validateData');
 
 const ServiceController = {};
 
-ServiceController.addService = async(req,res) => {
-    const { name } = req.body;
-    if(!validateData(name)){
+const addService = async(req,res) => {
+    const { name, description } = req.body;
+    console.log(req.body)
+    if(!validateData(name, description)){
         res.json({status:0,message: "Please Fill All Required Fields"});
     }else{
         try {
@@ -24,9 +25,9 @@ ServiceController.addService = async(req,res) => {
     }
 }
 
-ServiceController.getAllServices = async (req,res) => {
+const getAllServices = async (req,res) => {
     
-    return new Promise((resolve,reject) => {
+    return new Promise(async(resolve,reject) => {
         try {
             const services = await Service.find();
             resolve(services);
@@ -38,4 +39,7 @@ ServiceController.getAllServices = async (req,res) => {
 
 
 
-module.exports = ServiceController;
+module.exports = {
+    addService,
+    getAllServices
+};
