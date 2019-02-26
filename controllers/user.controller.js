@@ -47,17 +47,19 @@ const getDashboard = async(req,res) => {
 
 
 const search = async (req,res) => {
-    console.log(req.query);
+    // console.log(req.query);
     const user = req.session.user;
     const {SchName, CategoryName } = req.query;
     const users = await User.find({school: SchName}).populate(['services','school']);
     const search = users.filter((user) => {
         let check = false;
-        user.services.forEach((service) => {
-            if(service.name == CategoryName){
-                check = true;
-            }
-        })
+        if(user._id !== req.session.user._id){
+            user.services.forEach((service) => {
+                if(service.name == CategoryName){
+                    check = true;
+                }
+            })
+        }
         return check;
     });
     const schools = await getAllSchools();
@@ -79,11 +81,17 @@ const addUserService = async(req,res) => {
             if(services.length > 0){
                 // console.log(services);
 
-                services.forEach(function(service) {
+                services.forEach(async function(service) {
                     // console.log(user.services.indexOf(service))
                     if(user.services.indexOf(service) == -1){
                         user.services.push(service);
                     }
+                    // also add user id to the service document
+                    const serviceDoc = await Service.findById(service);
+                    if(serviceDoc.users.indexOf(user_id) == -1){
+                        serviceDoc.users.push(user_id);
+                    }
+                    await serviceDoc.save();
                     // console.log(user.services)
                 })
             }
@@ -182,6 +190,12 @@ const removeUserService = async(req,res) => {
                 });
                 user.services = newServices;
                 await user.save();
+                const service = await Service.findById(service_id);
+                let service_users = service.users;
+                let newServiceUsers = service_users.filter((user) => {
+                    return user != user_id;
+                })
+                await service.save();
                 res.json({status:1, message: user.services});
             }else{
                 res.json({status: 0, message: "User doesn't exist"});
@@ -333,7 +347,7 @@ const updateLastLogin = async(user_id) => {
         } catch (error) {
             reject(error);
         }
-        
+
     })
 }
 
@@ -392,7 +406,7 @@ const getUsersByService = async(service_id) => {
             let searchUsers =[];
             const users = await User.find();
             if(users.length > 0){
-                
+
             }
         } catch (error) {
             reject(error);

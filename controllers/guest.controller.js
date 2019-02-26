@@ -18,9 +18,14 @@ const authenticate = async(req,res) => {
                 if(!bcrypt.compareSync(password,user.password)){
                     res.json({status:0,message:"Sorry, Invalid email or password"});
                 }else{
-                    req.session.user = toJSON(user);
-                    await updateLastLogin(user._id);
-                    res.json({status:1,message:"Login Successful, We are redirecting you..."});
+                    if(user.isSuspended){
+                        res.json({status:0, message:"User Already Suspended"});
+                    }else{
+                        req.session.user = toJSON(user);
+                        await updateLastLogin(user._id);
+                        res.json({status:1,message:"Login Successful, We are redirecting you..."});
+                    }
+                    
                 }
                 
             }else{

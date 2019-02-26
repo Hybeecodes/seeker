@@ -27,7 +27,6 @@
         <button type="button" id="upload" style="width:25%;" class="btn btn-warning">
           Upload Picture
         </button>
-        <input type="file" name="profile_pic" id="profile_pic" style="display:none;">
       </div>
     </div>
     <!--Double columns-->
@@ -438,7 +437,10 @@
                                                           <div>
                                                               <input type="text" class="form-control" placeholder="WhatsApp Number" value="">
                                                           </div>
-
+                                                          <div>
+                                                             <input type="file" name="profile_pic" class="form-control" id="profile_pic" accept="image/*">
+                                                          </div>
+                                                           
                                                           <div>
                                                               <input type="submit" class="btn btn-primary" value="Update Profile">
                                                           </div>
@@ -744,9 +746,7 @@
     <script src="/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <script>
-        $('#upload').click(function(){
-          $('#profile_pic').trigger('click');
-        })
+        
         $('#services').select2({
           placeholder: "Select Services you offer",
           width: "100%"
