@@ -220,7 +220,12 @@
                     <div class="left-content">
                       <div class="clearfix">
                         <div class="company-logo">
-                          <img src="/images/job/1.png" alt="images" class="img-responsive">
+                          {{#if userResult.profile_pic}}
+                            <img src="/{{userResult.profile_pic}}" alt="images" class="img-responsive">
+                          {{else}}
+                            <img src="/uploads/avatar.png" alt="images" class="img-responsive">
+                          {{/if}}
+                          
                         </div>
                         <span class="tr-title">
                           <a href="job-details.html"> {{userResult.firstname}} {{userResult.lastname}} </a><span><a href="#">Loop</a></span>

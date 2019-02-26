@@ -98,7 +98,8 @@ const toJSON = (user) => {
         lastname: user.lastname,
         email: user.email,
         phone: user.phone,
-        username: user.username
+        username: user.username,
+        profile_pic: user.profile_pic
     };
 }
 

@@ -14,6 +14,7 @@ const UserSchema = new Schema({
     password: { type: String, required:[true, "Password is required"]},
     school: { type: Schema.Types.ObjectId, ref:"School",required:true},
     isSuspended: { type: Boolean, default: false},
+    profile_pic: { type: String},
     lastlogin: { type: Date, required: true, default: Date.now()}
 },
 {timestamps: true}

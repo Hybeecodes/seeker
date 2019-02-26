@@ -21,7 +21,12 @@
     <div class="jumbotron">
       <div class="container">
         <div class="profile">
-          <img src="/img/profile1.jpg" alt="profile" class="profile-img" />
+          {{#if user.profile_pic}}
+            <img src="/{{user.profile_pic}}" alt="profile" class="profile-img" />
+          {{else}}
+            <img src="/uploads/avatar.png" alt="images" class="img-responsive">
+          {{/if}}
+          
           <div class="profile-name"><p>{{user.username}}</p></div>
         </div>
         <button type="button" id="upload" style="width:25%;" class="btn btn-warning">
@@ -352,28 +357,28 @@
                                               <div id="create" role="tabpanel" class="tab-pane active">
                                                   <div style="margin-top:20px;" id="profileCreateDiv">
 
-                                                      <input type="hidden" id="UserId" value="{{userDetails._id}}">
+                                                      
 
 
-                                                      <form action="/user/Profile" method="post" class="profileForm tr-form">
-
+                                                      <form id="profileForm" action="/user/profile" method="post" enctype="multipart/form-data" role="form">
+                                                          <input type="hidden" name="user" id="UserId" value="{{userDetails._id}}">
                                                           <div class="form-group ">
-                                                              <input type="text" class="form-control" value="{{ userProfile.fullname }}" placeholder="Full Name" name="profile.FullName" id="fullname">
+                                                              <input type="text" class="form-control" value="{{ userProfile.fullname }}" placeholder="Full Name" name="fullname" id="fullname">
                                                           </div>
 
                                                           <div class="form-group form-inline">
-                                                              <input type="text" class="form-control" value="{{ userProfile.level }}" id="level" placeholder="Level" name="">
-                                                              <input type="text" class="form-control" value="{{ userProfile.department }}" id="department" placeholder="Department" name="">
-                                                              <input type="text" class="form-control" value="{{ userProfile.faculty }}" id="faculty" placeholder="Faculty" name="">
+                                                              <input type="text" class="form-control" value="{{ userProfile.level }}" name="level" id="level" placeholder="Level">
+                                                              <input type="text" class="form-control" value="{{ userProfile.department }}" name="department" id="department" placeholder="Department" >
+                                                              <input type="text" class="form-control" value="{{ userProfile.faculty }}" name="faculty" id="faculty" placeholder="Faculty" >
                                                           </div>
 
                                                           <div class="form-group">
-                                                              <input type="text" class="form-control" value="{{ userProfile.address }}" id="address" placeholder="Address" name="profile.Address">
+                                                              <input type="text" class="form-control" value="{{ userProfile.address }}" id="address" placeholder="Address" name="address">
                                                           </div>
 
                                                           <div class="form-group form-inline">
-                                                              <input type="text" class="form-control" id="city" value="{{ userProfile.city }}" placeholder="City" name="">
-                                                              <input type="text" class="form-control" id="state" value="{{ userProfile.state }}" placeholder="State" name="">
+                                                              <input type="text" class="form-control" id="city" value="{{ userProfile.city }}" placeholder="City" name="city">
+                                                              <input type="text" class="form-control" id="state" value="{{ userProfile.state }}" placeholder="State" name="state">
                                                           </div>
 
                                                           {{!-- <div class="form-group">
@@ -383,11 +388,15 @@
                                                           </div> --}}
 
                                                           <div class="form-group">
-                                                              <textarea cols="80" type="text" class="form-control" id="about" name="" hidden="AboutMe" placeholder="About Me">{{ userProfile._about }}</textarea>
+                                                              <textarea cols="80" type="text" class="form-control" id="about" name="_about" hidden="AboutMe" placeholder="About Me">{{ userProfile._about }}</textarea>
                                                           </div>
 
                                                           <div>
-                                                              <input type="text" class="form-control" value="{{ userProfile.whatsapp }}" id="whatsapp" placeholder="WhatsApp Number" name="">
+                                                              <input type="text" class="form-control" value="{{ userProfile.whatsapp }}" id="whatsapp" placeholder="WhatsApp Number" name="whatsapp">
+                                                          </div>
+
+                                                          <div>
+                                                            <input type="file" name="profile_pic" class="form-control" id="profile_pic" accept="image/*">
                                                           </div>
 
                                                           <div>
@@ -752,34 +761,35 @@
           width: "100%"
         })
 
-        $('.profileForm').submit(function(e){
-          e.preventDefault();
-          const user = {
-                 "fullname": $('#fullname').val(),
-                 "level": $('#level').val(),
-                 "department": $('#department').val(),
-                 "faculty": $('#faculty').val(),
-                 "address": $('#address').val(),
-                 "city": $('#city').val(),
-                 "state": $('#state').val(),
-                 "_about": $('#about').val(),
-                 "whatsapp": $('#whatsapp').val(),
-                 "user" : $('#UserId').val()
-             };
-        
-          $.post('/user/profile',user,function(data){
-            console.log(data);
-                if(data['status']){
-                  swal('Great!','Profile updated successfully','success').then(()=> {
-                    location.reload(true);
-                  });
-                }else{
-                  swal('huh!',data['message'],'error');
-                }
-              
-             })
-        })
-
+       $('#profileForm').submit((e)=>{
+      e.preventDefault();
+      var form = $('#profileForm')[0];
+     var data = new FormData(form);
+      $('#submit').text('Please wait...').attr('disabled',true);
+      $.ajax({
+        type:'POST',
+        enctype:'multipart/form-data',
+        url: '/user/profile',
+        data: data,
+        processData: false, //prevent jQuery from automatically transforming the data into a query string
+        contentType: false,
+        cache: false,
+        success:function(data){
+          if(data['status']){
+            swal('Great!',"Profile Updated Successfully",'success').then(()=> {
+              location.reload(true);
+            })
+          }else{
+            swal('Huh!', data['message'], 'error').then(() => {
+              $('#submit').text('Update Profile').attr('disabled',false);
+            })
+          }
+        },
+        error: function(xhr){
+          console.log(xhr);
+        }
+      })
+    })
         $('#addServices').click(function(e){
           e.preventDefault();
           const services = $('#services').val();

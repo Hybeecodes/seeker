@@ -2,7 +2,9 @@ const express = require('express');
 const router = express.Router();
 const { getDashboard, postProfile, addUserService, removeUserService, search, getUserProfilePage, reviewUser } = require('../controllers/user.controller');
 const ensureLoggedIn = require('../middlewares/ensureLoggedIn');
+const multer = require('multer');
 
+var upload = multer({ dest: 'public/uploads/' })
 
 
 router.use(ensureLoggedIn)
@@ -16,8 +18,7 @@ router.get('/contact',(req,res,next) => {
     res.render('contact',{title: "Campus Hustle - Contact", is_logged_in});
 })
 
-
-router.post('/profile',postProfile);
+router.post('/profile',upload.single('profile_pic'),postProfile);
 
 router.get('/dashboard', getDashboard);
 

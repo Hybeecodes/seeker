@@ -20,15 +20,24 @@
     <div class="jumbotron">
       <div class="container">
         <div class="profile">
-          <img src="/img/profile1.jpg" alt="profile" class="profile-img" />
+         {{#if user.profile_pic}}
+            <img src="/{{user.profile_pic}}" alt="profile" class="profile-img" />
+          {{else}}
+            <img src="/uploads/avatar.png" alt="images" class="img-responsive">
+          {{/if}}
           <div class="profile-name"><p> {{user.username}} </p></div>
         </div>
        
 
 
         <div class="profile">
-                <div class="profile-name"><p> {{userDetails.username}} </p></div>
-                <img src="/img/profile.jpeg" alt="profile" class="profile-img">
+          <div class="profile-name"><p> {{userDetails.username}} </p></div>
+          {{#if userDetails.profile_pic}}
+            <img src="/{{userDetails.profile_pic}}" alt="profile" class="profile-img" />
+          {{else}}
+            <img src="/uploads/avatar.png" alt="images" class="img-responsive">
+          {{/if}}
+                
               </div>
       </div>
     </div>

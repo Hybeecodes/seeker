@@ -4,6 +4,7 @@ const validateData = require('../helpers/validateData');
 const getDashboard = async(req,res) => {
     try {
         const user = req.session.user;
+        // console.log(user)
         // get current user jobs
         // get total positive reviews
         const positiveReviews = await getUserPositiveReviews(user._id);
@@ -322,6 +323,15 @@ const getUserProfile = async (user) => {
 }
 
 const postProfile = async(req,res) => {
+    // console.log(req.body)
+    // update picture
+    if(req.file){
+        console.log(req.file);
+        let image_path = `${req.file.path}`;
+        const { user } = req.body;
+        await User.findByIdAndUpdate(user,{$set:{profile_pic:image_path}});
+        req.session.user.profile_pic = image_path;
+      }
     try {
         const profile = await createUserProfile(req.body);
         return res.json({status:1, message:"Profile Updated Successfully"});
