@@ -7,6 +7,10 @@ const getLogin =  (req,res) => {
     res.render('login',{title: 'Campus Hustle Login'});
 };
 
+const getForgotPassword =  (req,res) => {
+    res.render('forgot_password',{title: 'Campus Hustle - Forgot Password'});
+};
+
 const authenticate = async(req,res) => {
     const {email, password} = req.body;
     if(!validateData(email,password)){
@@ -125,5 +129,6 @@ module.exports = {
     getLogin,
     getSignUp,
     authenticate,
+    getForgotPassword,
     signup
 }

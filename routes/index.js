@@ -1,8 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const {getLogin, getSignUp, authenticate, signup} = require('../controllers/guest.controller');
+const {getLogin, getSignUp, authenticate, signup, getForgotPassword} = require('../controllers/guest.controller');
 const { addSchool, getSchools, getAllSchools } = require('../controllers/school.controller');
 const { addService, getAllServices} = require('../controllers/service.controller');
+const { User }= require('../models/index')
+const uniString = require('unique-string');
+const bcrypt = require('bcrypt-nodejs')
+const mail = require('../helpers/nodeMailerWithTemp');
 router.get('/', async(req,res) => {
     if(req.session.user){
         return res.redirect('/user/dashboard');
@@ -12,6 +16,11 @@ router.get('/', async(req,res) => {
     const schools = await getAllSchools();
     res.render('index', {title: "Campus Hot Jobs", services, schools, hasServices});
 })
+
+Date.prototype.addHours= function(h){
+    this.setHours(this.getHours()+h);
+    return this;
+  }
 
 router.get('/contact',(req,res) => {
     is_logged_in = (req.session.user)? true: false;
@@ -23,6 +32,61 @@ router.get('/login', getLogin);
 router.get('/signup',getSignUp);
 
 router.post('/login',authenticate);
+
+router.get('/forgot_password', getForgotPassword);
+
+router.post('/forgot-password',(req,res,next)=> {
+    const { email } = req.body;
+    User.findOne({email},(err,user)=>{
+      if(user){
+        let string = uniString();
+        let token = `${email}_${string}`;
+        // console.log(token);
+        let link = `http://localhost:3000/reset-password?token=${token}`; // replace the localhost:3000 with your domain
+        // console.log(link);
+        const exp = new Date().addHours(2);
+        // console.log(now);
+        User.findOneAndUpdate({email},{resetPassToken:string,resetPassExp:exp}).then((user)=> {
+          mail(email,link);
+          return res.json({status:1, message:"A reset link has been sent to your email"});
+        })
+      }else{
+        return res.json({status:0, message:"Invalid Email"}); 
+      }
+    });
+  });
+
+  router.get('/reset-password',(req,res,next) => {
+    let { token } = req.query;
+    token = token.split('_');
+    console.log(token);
+    const [ email, string] = token;
+    User.findOne({email,resetPassToken:token}).then((user)=> {
+      console.log(user.resetPassExp)
+      // console.log('time',new Date().toISOString())
+      if(user.resetPassExp > Date.now()){
+        res.render('reset-password',{user_id: user._id});
+      }else{
+        res.send("Sorry, link has expired")
+      }
+    })
+    // console.log(email)
+  })
+  
+  router.post('/reset-password',(req,res,next)=>{
+    const { user_id, new_pass, con_pass } = req.body;
+    if(new_pass === con_pass){
+      let password = bcrypt.hashSync(new_pass);
+      User.findByIdAndUpdate(user_id,{password},(err,user)=>{
+        if(err){
+          res.json({status:0, message:err.message})
+        }else{
+            return res.json({status:1, message:"Password Reset Succesfully"});
+        }
+      })
+    }
+    
+  })
 
 router.post('/signup',signup);
 
