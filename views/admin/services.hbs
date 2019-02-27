@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="au theme template">
+    <meta name="author" content="Hau Nguyen">
+    <meta name="keywords" content="au theme template">
+
+    <!-- Title Page-->
+    <title>{{title}}</title>
+
+    <!-- Fontfaces CSS-->
+    <link href="css/font-face.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="css/theme.css" rel="stylesheet" media="all">
+
+</head>
+
+<body class="animsition">
+    <div class="page-wrapper">
+        <!-- HEADER MOBILE-->
+        {{> _sidenav_mobile }}
+        <!-- END HEADER MOBILE-->
+
+        <!-- MENU SIDEBAR-->
+        {{> _sidenav }}
+        <!-- END MENU SIDEBAR-->
+
+        <!-- PAGE CONTAINER-->
+        <div class="page-container">
+            <!-- HEADER DESKTOP-->
+            {{> _header }}
+            <!-- END HEADER DESKTOP-->
+
+            <!-- MAIN CONTENT-->
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <!-- DATA TABLE -->
+                                <h3 class="title-5 m-b-35">Job Categories</h3>
+                                <form id="serviceForm">
+                                    <div class="first alert"></div>
+                                    <div class="row">
+                                        <div class="form-group col">
+                                            <input type="text" name="" id="name" class="form-control" placeholder="Service Name">
+                                        </div>
+
+                                        <div class="form-group col">
+                                            <textarea type="text" name="" id="description" class="form-control" placeholder="Service Description"></textarea>
+                                        </div>
+                                        <div class="form-group col">
+                                            <button type="submit" class="btn btn-primary">Add Service</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="table-responsive table-responsive-data2">
+                                    <table class="table table-data2">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    <label class="au-checkbox">
+                                                        <input type="checkbox">
+                                                        <span class="au-checkmark"></span>
+                                                    </label>
+                                                </th>
+                                                 <th>Name</th>
+                                                <th>Description</th>
+                                                <th>Users</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {{#if hasServices}}
+                                                  {{#each services as |service|}}
+                                                <tr class="tr-shadow">
+                                                <td>
+                                                    <label class="au-checkbox">
+                                                        <input type="checkbox">
+                                                        <span class="au-checkmark"></span>
+                                                    </label>
+                                                </td>
+                                                <td>{{ service.name }}</td>
+                                                <td>{{ service.description }}</td>
+                                                <td>{{ service.users.length }}</td>
+                                                <td>
+                                                    <div class="table-data-feature">
+                                                       <button class="item" data-toggle="tooltip" onclick="editService('{{ service._id }}','{{ service.name }}','{{ service.description }}')" data-placement="top" title="Edit Service">
+                                                            <i class="zmdi zmdi-edit"></i>
+                                                        </button>                                                 
+                                                        <button class="item" data-toggle="tooltip" onclick="deleteService('{{ service._id }}')" data-placement="top" title="Delete Service">
+                                                            <i class="zmdi zmdi-delete"></i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            {{/each}}
+                                            {{else}}
+                                                <p>No Services</p>
+                                            {{/if}}
+                                          
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- END DATA TABLE -->
+                            </div>
+                        </div>
+                        {{> _footer }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Modal -->
+<div class="modal fade" id="editServiceModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Service</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="editService">
+            <div class="alert"></div>
+            <div class="form-group">
+                <label for="">Name</label>
+                <input type="text" name="name" value="" id="modal_name" class="form-control">
+            </div>
+            <input type="hidden" name="" id="modal_service">
+            <div class="form-group">
+                <label for="">Description</label>
+                <textarea name="description" class="form-control" id="modal_description"></textarea>
+            </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" id="updateService" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <!-- Jquery JS-->
+    <script src="vendor/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="vendor/slick/slick.min.js">
+    </script>
+    <script src="vendor/wow/wow.min.js"></script>
+    <script src="vendor/animsition/animsition.min.js"></script>
+    <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    </script>
+    <script src="vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="vendor/counter-up/jquery.counterup.min.js">
+    </script>
+    
+    <script src="vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="vendor/select2/select2.min.js">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    </script>
+
+    <!-- Main JS-->
+    <script src="js/main.js"></script>
+
+    <script>
+        function editService(service_id, name, description) {
+            $('#modal_name').val(name);
+            $('#modal_service').val(service_id);
+            $('#modal_description').val(description);
+            $('#editServiceModal').modal();
+        }
+
+        $('#updateService').click(function(e) {
+            e.preventDefault();
+            const service = {
+                "name": $('#modal_name').val(),
+                "description": $('#modal_description').val(),
+                "service": $('#modal_service').val()
+            };
+            $.post('/admin/update_service',service, function(data){
+                if(data['status']){
+                    $('.alert').removeClass("alert-danger").addClass("alert-success").text('Service Updated Successfully');
+                    setTimeout(() => {
+                        location.reload(true);
+                    }, 1300);
+                 }else{
+                    $('.alert').removeClass("alert-success").addClass("alert-danger").text(data['message']);
+                 }
+            })
+        })
+
+        $('#serviceForm').submit(function(e){
+            e.preventDefault();
+            const service = {
+                "name": $('#name').val(),
+                "description": $('#description').val()
+            };
+            $.post('/admin/add_service',service, function(data){
+                if(data['status']){
+                    swal('Great!',"Service Added Successfully",'success').then(() => {
+                        location.reload(true);
+                    })
+                }
+            })
+        })
+        function deleteService(service_id) {
+            $.post(`/admin/delete_service/${service_id}`,function(data){
+                if(data['status']){
+                    swal('Great!',data['message'],'success').then(() => {
+                        location.reload(true);
+                    })
+                }
+            })
+        }
+    </script>
+
+</body>
+
+</html>
+<!-- end document-->

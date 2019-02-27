@@ -110,7 +110,7 @@
                  if(data['status']){
                     $('.alert').removeClass("alert-danger").addClass("alert-success").text(data['message']);
                     setTimeout(() => {
-                        window.location = "/admin/dashboard";
+                        window.location = "/admin";
                     }, 2000);
                  }else{
                     $('.alert').removeClass("alert-success").addClass("alert-danger").text(data['message']);

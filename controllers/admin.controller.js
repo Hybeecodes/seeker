@@ -56,8 +56,11 @@ const create = async(req,res) => {
 
 const getIndex = async(req,res) => {
     try {
+        const services = await Service.find();
+        const users = await User.find();
+        console.log(users)
         const admin = req.session.admin;
-        res.render('admin/index',{title: "Campus Hustle", admin});
+        res.render('admin/index',{title: "Campus Hustle", admin, users,services});
     } catch (error) {
         
     }
@@ -100,7 +103,8 @@ const getServices = async(req,res) => {
     try {
         const admin = req.session.admin;
         const services = await Service.find();
-        res.render('admin/service',{ title: "Campus Hustle", services, admin});
+        const hasServices = (services.length > 0)? true: false;
+        res.render('admin/services',{ title: "Campus Hustle - Users", services, admin, hasServices});
     } catch (error) {
         
     }
@@ -118,6 +122,22 @@ const addService = async(req,res) => {
         }
     } catch (error) {
         res.json({status:0, message:error.message});
+    }
+}
+
+const updateService = async(req,res) => {
+    try {
+        const { service, name, description } = req.body;
+
+        if(!validateData(name,description, service)){
+            res.json({status:0, message: "Missing Input"});
+        }else{
+            const newService = await Service.findByIdAndUpdate(service,{$set:{name, description}});
+            res.json({status:1,message:newService});
+        }
+       
+    } catch (error) {
+        res.json({status:0, message: error.message});
     }
 }
 
@@ -162,5 +182,7 @@ module.exports = {
     getServices,
     suspendUser,
     removeUser,
-    unSuspendUser
+    unSuspendUser,
+    removeService,
+    updateService
 };
