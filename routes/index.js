@@ -8,8 +8,9 @@ router.get('/', async(req,res) => {
         return res.redirect('/user/dashboard');
     }
     const services = await getAllServices();
+    const hasServices = services.length;
     const schools = await getAllSchools();
-    res.render('index', {title: "Campus Hot Jobs", services, schools});
+    res.render('index', {title: "Campus Hot Jobs", services, schools, hasServices});
 })
 
 router.get('/contact',(req,res) => {

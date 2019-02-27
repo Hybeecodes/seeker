@@ -138,7 +138,6 @@ select:focus,
 .btn {
   color: #fff;
   padding: 8px 20px 5px;
-  border-radius: 30px;
   font-size: 14px;
   position: relative;
   z-index: 1;
@@ -1925,7 +1924,6 @@ select:focus,
 .user-account .form-control,
 .user-account .dropdown {
   padding: 5px 20px;
-  border-radius: 30px;
   margin-bottom: 30px;
   background-color: #fcfcfc;
 }

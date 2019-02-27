@@ -21,9 +21,9 @@
       <div class="container">
         <div class="profile">
          {{#if user.profile_pic}}
-            <img src="/{{user.profile_pic}}" alt="profile" class="profile-img" />
+            <img src="/{{user.profile_pic}}" width="250" height="250" class="img-responsive profile-img" alt="profile" />
           {{else}}
-            <img src="/uploads/avatar.png" alt="images" class="img-responsive">
+           <img src="/uploads/avatar.png" width="250" height="250" alt="images" class="img-responsive profile-img">
           {{/if}}
           <div class="profile-name"><p> {{user.username}} </p></div>
         </div>
@@ -33,9 +33,9 @@
         <div class="profile">
           <div class="profile-name"><p> {{userDetails.username}} </p></div>
           {{#if userDetails.profile_pic}}
-            <img src="/{{userDetails.profile_pic}}" alt="profile" class="profile-img" />
+            <img src="/{{userDetails.profile_pic}}" alt="profile" width="250" height="250" class="img-responsive profile-img" />
           {{else}}
-            <img src="/uploads/avatar.png" alt="images" class="img-responsive">
+            <img src="/uploads/avatar.png" alt="images" width="250" height="250" class="img-responsive profile-img">
           {{/if}}
                 
               </div>
@@ -71,7 +71,7 @@
                 <button
                   type="button"
                   class="btn btn-primary"
-                  style="margin:25px 0px;"
+                  style="margin:25px 0px; padding-top:15px;"
                 >
                   <span class="fas">{{allReviews.length}}</span>
                   <br> <br>
@@ -350,7 +350,7 @@
 
                       <input type="hidden" name="" value="{{userDetails._id}}" id="user_id">
                       <input type="hidden" name="" value="{{user._id}}" id="reviewer_id">
-
+                      <p>(Reviews can be updated)</p>
                       <div class="form-group">
                         <input type="checkbox" name="type" id="like">Like
                         <input type="checkbox" name="type" id="dislike">Dislike

@@ -167,10 +167,10 @@ h4.contact {
 
 
 .fas {
-  border-radius: 60%;
+  border-radius: 100%;
   background: white;
-  padding: 20px;
-  margin-left: -10px;
+  padding: 15px;
+  /* margin-left: -10px; */
   color: #2c1106;
   font-size: 2.4rem;
   width: 50%;

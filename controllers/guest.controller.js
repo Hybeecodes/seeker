@@ -29,7 +29,25 @@ const authenticate = async(req,res) => {
                 }
                 
             }else{
-                res.json({status:0,message:"Sorry, Invalid email or password"});
+                const user = await User.findOne({phone :email});
+                if(user){
+                    if(!bcrypt.compareSync(password,user.password)){
+                        res.json({status:0,message:"Sorry, Invalid email or password"});
+                    }else{
+                        if(user.isSuspended){
+                            res.json({status:0, message:"User Already Suspended"});
+                        }else{
+                            req.session.user = toJSON(user);
+                            await updateLastLogin(user._id);
+                            res.json({status:1,message:"Login Successful, We are redirecting you..."});
+                        }
+                        
+                    }
+                    
+                }else{
+                    
+                    res.json({status:0,message:"Sorry, Invalid email or password"});
+                }
             }
         } catch (error) {
             res.json({status:0,message:error.message});

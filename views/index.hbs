@@ -76,7 +76,7 @@
 			<div class="section-title">
 				<h1>All Jobs Category</h1>
 			</div>
-			{{#if condition}}
+			{{#if hasServices}}
 					<ul class="category-list tr-list">
 				
 						{{#each services as |service|}}
@@ -85,8 +85,8 @@
 										<span class="icon">
 												<i class="fa fa-plus-square fa-3x icon-color" aria-hidden="true"></i>
 										</span>
-										<span class="category-title">Accounting/Finance</span>
-										<span class="category-quantity">(1298)</span>
+										<span class="category-title"> {{service.name}} </span>
+										<span class="category-quantity">( {{service.users.length}} )</span>
 									</a>
 							</li>
 						{{/each}}

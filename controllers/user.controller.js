@@ -51,18 +51,29 @@ const search = async (req,res) => {
     // console.log(req.query);
     const user = req.session.user;
     const {SchName, CategoryName } = req.query;
-    const users = await User.find({school: SchName}).populate(['services','school']);
-    const search = users.filter((user) => {
-        let check = false;
-        if(user._id !== req.session.user._id){
-            user.services.forEach((service) => {
-                if(service.name == CategoryName){
-                    check = true;
-                }
-            })
-        }
-        return check;
-    });
+    let users = [];
+    if(validateData(SchName)){
+         users = await User.find({school: SchName}).populate(['services','school']);
+    }else{
+         users = await User.find().populate(['services','school']);
+    }
+    let search = [];
+    if(validateData(CategoryName)){
+         search = users.filter((user) => {
+            let check = false;
+            if(user._id !== req.session.user._id){
+                user.services.forEach((service) => {
+                    if(service.name == CategoryName){
+                        check = true;
+                    }
+                })
+            }
+            return check;
+        });
+    }else{
+         search = users;
+    }
+    
     const schools = await getAllSchools();
     const allServices = await getAllServices();
     const positiveReviews = await getUserPositiveReviews(user._id);
