@@ -18,7 +18,15 @@
     <!--Navbar--> 
     {{> user_nav}}
     <!--Hero-->
-    <div class="jumbotron">
+    <div
+      {{#if user.profile_pic}}
+        class="jumbotron"
+          style="background-image: url('../{{ user.cover_pic }}');"
+      {{else}}
+        class="jumbotron"
+          style="background-image: url('../uploads/placeholder.png');"
+      {{/if}}
+      >
       <div class="container">
         <div class="profile">
           {{#if user.profile_pic}}
@@ -57,34 +65,24 @@
                 <button
                   type="button"
                   class="btn btn-primary"
-                  style="margin:25px 0px;"
+                  style="margin:25px 0px; padding-top:15px;"
                 >
-                  <img
-                    src="/images/icons/fun-fact-color2.png"
-                    alt="images"
-                    class="img-responsive center-block "
-                    style="margin-bottom: 10px ;"
-                  />
-                  Positive reviews
+                  <span class="fas">{{ positiveReviews.length}}</span>
+                  <br> <br>
+                  Positive Reviews
                 </button>
-                <span class="fa">{{positiveReviews.length}}</span>
               </div>
 
               <div class="actions col-sm-4">
                 <button
                   type="button"
                   class="btn btn-primary"
-                  style="margin:25px 0px;"
+                  style="margin:25px 0px; padding-top:15px;"
                 >
-                  <img
-                    src="/images/icons/fun-fact-color3.png"
-                    alt="images"
-                    class="img-responsive center-block "
-                    style="margin-bottom: 10px ;"
-                  />
-                  Negative reviews
+                  <span class="fas">{{ negativeReviews.length }}</span>
+                  <br> <br>
+                  Negative Reviews
                 </button>
-                <span class="fa">{{negativeReviews.length}}</span>
               </div>
             </div>
           </div>
@@ -288,21 +286,25 @@
 
 
                                         
-                                          <div  id="reviews" class="LR_Padding">   
-                                            <ul class="list-inline LR_Padding"> 
+                                          <div  id="reviews" class="LR_Padding">  
+                                            {{#if hasReviews}}
+                                              <ul class="list-inline LR_Padding"> 
                                               {{#each allReviews as |review|}}
                                                 <li>
                                                   <p>
                                                         <i class="fa fa-user-circle fa-3x" aria-hidden="true"></i> 
                                                         <b> {{review._reviewer.username}} (CSE-400level)</b><br/>
-                                                       {{review.comment}}
+                                                       {{ review.comment}}
                                                   </p> 
                                                 </li>  
                                                 <br>
                                               {{/each}}
                                               
-                                              
-                                            </ul>	
+                                              </ul>	
+                                            {{else}}
+                                              <p>No reviews Yet</p>
+                                            {{/if}} 
+                                            
 
                                           </div>
                                           <hr/>
@@ -391,7 +393,7 @@
                                                           </div> --}}
 
                                                           <div class="form-group">
-                                                              <textarea cols="80" type="text" class="form-control" id="about" name="_about" hidden="AboutMe" placeholder="About Me">{{ userProfile._about }}</textarea>
+                                                              <textarea cols="80" rows="10" type="text" class="form-control" id="about" name="_about" hidden="AboutMe" placeholder="About Me">{{ userProfile._about }}</textarea>
                                                           </div>
 
                                                           <div>
@@ -399,6 +401,7 @@
                                                           </div>
 
                                                           <div>
+                                                            <label for="profile_pic">Upload Profile Picture</label>
                                                             <input type="file" name="profile_pic" class="form-control" id="profile_pic" accept="image/*">
                                                           </div>
 

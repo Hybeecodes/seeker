@@ -17,7 +17,15 @@
     <!--Navbar-->
     {{>user_nav}}
     <!--Hero-->
-    <div class="jumbotron">
+    <div 
+      {{#if user.profile_pic}}
+        class="jumbotron"
+          style="background-image: url('/{{ user.cover_pic }}');"
+      {{else}}
+        class="jumbotron"
+          style="background-image: url('/uploads/placeholder.png');"
+      {{/if}}
+    >
       <div class="container">
         <div class="profile">
          {{#if user.profile_pic}}
@@ -68,7 +76,7 @@
           <div class="col-sm-12">
             <div class="row">
               <div class="actions col-sm-4">
-                <button
+               <button
                   type="button"
                   class="btn btn-primary"
                   style="margin:25px 0px; padding-top:15px;"
@@ -77,40 +85,31 @@
                   <br> <br>
                   Total job done
                 </button>
+               
               </div>
 
               <div class="actions col-sm-4">
                 <button
                   type="button"
                   class="btn btn-primary"
-                  style="margin:25px 0px;"
+                  style="margin:25px 0px; padding-top:15px;"
                 >
-                  <img
-                    src="/images/icons/fun-fact-color2.png"
-                    alt="images"
-                    class="img-responsive center-block "
-                    style="margin-bottom: 10px ;"
-                  />
-                  Positive reviews
+                  <span class="fas">{{ positiveReviews.length}}</span>
+                  <br> <br>
+                  Positive Reviews
                 </button>
-                <span class="fa">{{positiveReviews.length}}</span>
               </div>
 
               <div class="actions col-sm-4">
                 <button
                   type="button"
                   class="btn btn-primary"
-                  style="margin:25px 0px;"
+                  style="margin:25px 0px; padding-top:15px;"
                 >
-                  <img
-                    src="/images/icons/fun-fact-color3.png"
-                    alt="images"
-                    class="img-responsive center-block "
-                    style="margin-bottom: 10px ;"
-                  />
-                  Negative reviews
+                  <span class="fas">{{ negativeReviews.length }}</span>
+                  <br> <br>
+                  Negative Reviews
                 </button>
-                <span class="fa">{{negativeReviews.length}}</span>
               </div>
             </div>
           </div>
@@ -129,13 +128,16 @@
           </div>
 
           <ul class="nav nav-tabs profile-tabs section" role="tablist">
-            <li role="presentation" class="active">
+            <li role="presentation">
               <a
-                href="#account-info"
+                href="/user/dashboard"
                 aria-controls="account-info"
                 role="tab"
                 data-toggle="tab"
-                ><i class="fa fa-life-ring" aria-hidden="true"></i> Hire  Job
+                ><span>
+                  <i class="fa fa-life-ring" aria-hidden="true"></i>
+                </span>
+                 Hire  Job
                 Seeker
               </a>
             </li>
@@ -143,7 +145,7 @@
 
             <li role="presentation">
                 <a
-                  href="#edit-resume"
+                  href="/user/dashboard"
                   aria-controls="edit-resume"
                   role="tab"
                   data-toggle="tab"
@@ -170,7 +172,7 @@
            
             <li role="presentation">
               <a
-                href="#edit-resume"
+                href="/user/dashboard"
                 aria-controls="edit-resume"
                 role="tab"
                 data-toggle="tab"
@@ -184,7 +186,7 @@
 
             <li role="presentation">
                     <a
-                      href="#edit-resume"
+                      href="/user/dashboard"
                       aria-controls="edit-resume"
                       role="tab"
                       data-toggle="tab"
@@ -226,7 +228,8 @@
                         <!-- <div class="icon"><img src="images/icons/2.png" alt="Icon" class="img-responsive"></div>  -->
                         <h4 class="myTitle"><b> List of what i can Do </b></h4>
                       </div>
-                    {{#if hasServices}}
+                      <div style="padding:15px;">
+                         {{#if hasServices}}
                        <ul id="ul_Interests" class="list-inline">
                          {{#each userDetails.services as |service|}}
                            <li id="{{service.id}}">
@@ -240,6 +243,8 @@
                     {{else}}
                       <p>You have not selected any service yet, please update your profile</p>
                     {{/if}}
+                      </div>
+                   
                      
                     </div>
 
@@ -308,21 +313,25 @@
 
 
                                         
-                                          <div  id="reviews" class="LR_Padding">   
-                                            <ul class="list-inline LR_Padding"> 
+                                           <div  id="reviews" class="LR_Padding">  
+                                            {{#if hasReviews}}
+                                              <ul class="list-inline LR_Padding"> 
                                               {{#each allReviews as |review|}}
                                                 <li>
                                                   <p>
                                                         <i class="fa fa-user-circle fa-3x" aria-hidden="true"></i> 
                                                         <b> {{review._reviewer.username}} (CSE-400level)</b><br/>
-                                                       {{review.comment}}
+                                                       {{ review.comment}}
                                                   </p> 
                                                 </li>  
                                                 <br>
                                               {{/each}}
                                               
-                                              
-                                            </ul>	
+                                              </ul>	
+                                            {{else}}
+                                              <p>No reviews Yet</p>
+                                            {{/if}} 
+                                            
 
                                           </div>
                                           <hr/>
@@ -356,7 +365,7 @@
                         <input type="checkbox" name="type" id="dislike">Dislike
                       </div>
                       
-                      <button type="submit" id="submit" class="btn btn-primary">Review</button>
+                      <button type="submit" id="reviewUser" class="btn btn-primary">Review</button>
                     </form>
 
                   </div>
@@ -373,11 +382,11 @@
       integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="
       crossorigin="anonymous"
     ></script>
-
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://js.paystack.co/v1/inline.js"></script>
 
 
-    <script src="//bootstrap.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
 
     <script>
 
@@ -389,6 +398,7 @@
             }else if($('#dislike').is(':checked')){
                 isPositive = false;
             }
+            $('#reviewUser').text('Please wait...').attr('disabled', true);
            const review = {
              "_reviewee": $('#user_id').val(),
              "comment": $('#comment').val(),
@@ -398,8 +408,13 @@
            $.post('/user/review',review,function(data){
              console.log(data)
                 if(data['status']){
-                  
+                  swal("Great!", "User Successfully Reviewed",'success').then(() => {
+                    location.reload(true);
+                  })
                 }else{
+                   swal("Sorry!", data['message'],'success').then(() => {
+                    l$('#reviewUser').text('Review').attr('disabled', false);
+                  })
                   
                 }
             })

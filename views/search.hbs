@@ -18,16 +18,28 @@
     <!--Navbar--> 
     {{> user_nav}}
     <!--Hero-->
-    <div class="jumbotron">
+    <div
+      {{#if user.profile_pic}}
+        class="jumbotron"
+          style="background-image: url('../{{ user.cover_pic }}');"
+      {{else}}
+        class="jumbotron"
+          style="background-image: url('../uploads/placeholder.png');"
+      {{/if}}
+      >
       <div class="container">
         <div class="profile">
-          <img src="/img/profile1.jpg" alt="profile" class="profile-img" />
+          {{#if user.profile_pic}}
+            <img src="/{{user.profile_pic}}" alt="profile" class="profile-img" />
+          {{else}}
+            <img src="/uploads/avatar.png" width="250" height="250" alt="images" class="img-responsive profile-img">
+          {{/if}}
+          
           <div class="profile-name"><p>{{user.username}}</p></div>
         </div>
         <button type="button" id="upload" style="width:25%;" class="btn btn-warning">
           Upload Picture
         </button>
-        <input type="file" name="profile_pic" id="profile_pic" style="display:none;">
       </div>
     </div>
     <!--Double columns-->
@@ -37,54 +49,40 @@
           <div class="col-sm-12">
             <div class="row">
               <div class="actions col-sm-4">
-                <button
+               <button
                   type="button"
                   class="btn btn-primary"
-                  style="margin:25px 0px;"
+                  style="margin:25px 0px; padding-top:15px;"
                 >
-                  <img
-                    src="/images/icons/fun-fact-color1.png"
-                    alt="images"
-                    class="img-responsive center-block "
-                    style="margin-bottom: 10px ;"
-                  />
+                  <span class="fas">{{allReviews.length}}</span>
+                  <br> <br>
                   Total job done
                 </button>
-                <span class="fa"> {{allReviews.length}} </span>
+               
               </div>
 
               <div class="actions col-sm-4">
                 <button
                   type="button"
                   class="btn btn-primary"
-                  style="margin:25px 0px;"
+                  style="margin:25px 0px; padding-top:15px;"
                 >
-                  <img
-                    src="/images/icons/fun-fact-color2.png"
-                    alt="images"
-                    class="img-responsive center-block "
-                    style="margin-bottom: 10px ;"
-                  />
-                  Positive reviews
+                  <span class="fas">{{ positiveReviews.length}}</span>
+                  <br> <br>
+                  Positive Reviews
                 </button>
-                <span class="fa">{{positiveReviews.length}}</span>
               </div>
 
               <div class="actions col-sm-4">
                 <button
                   type="button"
                   class="btn btn-primary"
-                  style="margin:25px 0px;"
+                  style="margin:25px 0px; padding-top:15px;"
                 >
-                  <img
-                    src="/images/icons/fun-fact-color3.png"
-                    alt="images"
-                    class="img-responsive center-block "
-                    style="margin-bottom: 10px ;"
-                  />
-                  Negative reviews
+                  <span class="fas">{{ negativeReviews.length }}</span>
+                  <br> <br>
+                  Negative Reviews
                 </button>
-                <span class="fa">{{negativeReviews.length}}</span>
               </div>
             </div>
           </div>
@@ -221,7 +219,7 @@
                       <div class="clearfix">
                         <div class="company-logo">
                           {{#if userResult.profile_pic}}
-                            <img src="/{{userResult.profile_pic}}" alt="images" width="150" height="150" class="img-responsive">
+                            <img src="/{{userResult.profile_pic}}" alt="images" width="50" height="50" class="img-rounded">
                           {{else}}
                             <img src="/uploads/avatar.png" alt="images" width="50" height="50" class="img-responsive">
                           {{/if}}

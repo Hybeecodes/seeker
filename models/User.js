@@ -15,6 +15,7 @@ const UserSchema = new Schema({
     school: { type: Schema.Types.ObjectId, ref:"School",required:true},
     isSuspended: { type: Boolean, default: false},
     profile_pic: { type: String},
+    cover_pic: { type: String},
     lastlogin: { type: Date, required: true, default: Date.now()},
     resetPassToken: {type:String},
     resetPassExp: {type: Date}

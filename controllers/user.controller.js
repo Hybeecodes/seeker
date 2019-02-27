@@ -14,7 +14,7 @@ const getDashboard = async(req,res) => {
         const userDetails = await getUserDetails(user._id);
 
         const allReviews = await getAllUserReviews(user._id);
-
+        const hasReviews = allReviews.length > 0? true: false;
         const schools = await getAllSchools();
 
         const userCount = await getNumberOfMembers();
@@ -24,13 +24,14 @@ const getDashboard = async(req,res) => {
         const allServices = await getAllServices();
         const jobs = positiveReviews.length + negativeReviews.length;
 
-        let hasServices = userDetails.services.length > 0;
+        let hasServices = userDetails.services.length > 0? true : false;
         res.render('dashboard',{
             title: "Campus Hustle -  Dashboard",
             user,
             positiveReviews,
             negativeReviews,
             allReviews,
+            hasReviews,
             jobs,
             userDetails,
             userProfile,
@@ -273,8 +274,16 @@ const getUserPositiveReviews = (user_id) => {
 const reviewUser = async(req,res) => {
     try {
         const { _reviewee, comment, isPositive, _reviewer } = req.body;
-        const newReview = new Review(req.body);
-        const review = await newReview.save();
+        // has user reviewd before
+        const rev = await Review.findOne({_reviewee,_reviewer});
+        let review = {};
+        if(rev){
+            review = await Review.findOneAndUpdate({_reviewee,_reviewer}, {$set:{comment, isPositive}});
+        }else{
+            const newReview = new Review(req.body);
+            review = await newReview.save();
+        }
+        
         res.json({status:1, message: review});
     } catch (error) {
         res.json({status:0, message:error.message});
@@ -336,14 +345,17 @@ const getUserProfile = async (user) => {
 const postProfile = async(req,res) => {
     // console.log(req.body)
     // update picture
-    if(req.file){
-        console.log(req.file);
-        let image_path = `${req.file.path}`;
-        const { user } = req.body;
-        await User.findByIdAndUpdate(user,{$set:{profile_pic:image_path}});
-        req.session.user.profile_pic = image_path;
-      }
     try {
+        if(req.file){
+            // console.log(req.file);
+            let image_path = `${req.file.path}`.substring(7);
+            let cover= `${req.file.destination}`.substring(7);
+            let cover_pic = `${cover}/${req.file.filename}`;
+            const { user } = req.body;
+            await User.findByIdAndUpdate(user,{$set:{profile_pic:image_path, cover_pic}});
+            req.session.user.profile_pic = image_path;
+            req.session.user.cover_pic = cover_pic;
+          }
         const profile = await createUserProfile(req.body);
         return res.json({status:1, message:"Profile Updated Successfully"});
     } catch (error) {
@@ -378,13 +390,14 @@ const createUserProfile = async(body) => {
         try {
             const { user, fullname, level, department, faculty, city, state, whatsapp, _about, address} = body;
             if(!validateData(user, fullname, level, department, faculty, city, state, whatsapp, _about, address)){
-                reject("One Or more Credentials missing");
+                reject("Please Fill all required Fields");
             }
             // check if record exists
             const _user = await UserProfile.findOne({user: user});
+            // console.log(_user);
             if(_user){
                 // update record
-                const updatedUserProfile = await UserProfile.findByIdAndUpdate(user,{$set:
+                const updatedUserProfile = await UserProfile.findOneAndUpdate({user:user},{$set:
                     {
                         fullname,
                         level,

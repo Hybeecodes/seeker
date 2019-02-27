@@ -82,17 +82,7 @@
 
 										 </div>  
                      
-										 
-                      <div class="form-group">
-                          {{!-- <label for="school">Select Campus</label> --}}
-                          <select name="school" id="school" class="form-control">
-                            <option value="">Select Campus</option>
-                              {{#each schools as |school|}}
-                                <option value="{{school._id}}">{{school.name}}</option>
-                              {{/each}}
-                          </select>
-                      </div>
-										
+                      										
 										<div class="row">
                       <div class="form-group col-md-6">
                         <input type="text" class="form-control" id="phone" placeholder="your Phone Number">
@@ -107,6 +97,21 @@
                         <input type="number" class="form-control" id="age" placeholder="your Age">
                       </div>
                       <div class="form-group col-md-6">
+                        <input type="text" id="username" class="form-control" placeholder="Username">
+                      </div>
+                    </div>
+                  <div class="row">
+                       <div class="form-group col-md-6">
+                          {{!-- <label for="school">Select Campus</label> --}}
+                          <select name="school" id="school" class="form-control">
+                            <option value="">Select Campus</option>
+                              {{#each schools as |school|}}
+                                <option value="{{school._id}}">{{school.name}}</option>
+                              {{/each}}
+                          </select>
+                      </div>
+
+                      <div class="form-group col-md-6">
                         <div class=" radio-inline"> 
 												   Gender
 												  <label class="radio-inline">
@@ -118,12 +123,7 @@
 												 
 												 </div> 
                       </div>
-                    </div>
-                    
-										
-									<div class="form-group">
-                    <input type="text" id="username" class="form-control" placeholder="Username">
-                  </div>
+                     </div>
 										<div class="row">
                       <div class="form-group col-md-6">
 										    <input type="password"  class="form-control" id="password" placeholder="enter Password"> 
