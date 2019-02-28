@@ -2117,6 +2117,8 @@ select:focus,
 .profile-tabs > li.active > a:focus,
 .profile-tabs > li.active > a:hover {
   color: #2c1106;
+  font-size: larger;
+  transition: .3s ease;
   border: 0;
   background-color: transparent;
 }

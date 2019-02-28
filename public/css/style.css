@@ -4,6 +4,12 @@
   box-sizing: border-box;
 }
 
+hr.style1{
+	border-top: 1px solid #8c8b8b;
+}
+
+
+
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -13,6 +19,10 @@
   background-color: #fff;
   margin: 0;
   padding: 10px;
+}
+
+.text {
+  color: #000 !important;
 }
 
 .secColor {

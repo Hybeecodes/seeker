@@ -80,7 +80,7 @@
                   type="button"
                   class="btn btn-primary"
                   style="margin:25px 0px; padding-top:15px;"
-                >
+                > <br>
                   <span class="fas">{{allReviews.length}}</span>
                   <br> <br>
                   Total job done
@@ -93,7 +93,7 @@
                   type="button"
                   class="btn btn-primary"
                   style="margin:25px 0px; padding-top:15px;"
-                >
+                > <br>
                   <span class="fas">{{ positiveReviews.length}}</span>
                   <br> <br>
                   Positive Reviews
@@ -105,7 +105,7 @@
                   type="button"
                   class="btn btn-primary"
                   style="margin:25px 0px; padding-top:15px;"
-                >
+                > <br>
                   <span class="fas">{{ negativeReviews.length }}</span>
                   <br> <br>
                   Negative Reviews
@@ -142,9 +142,11 @@
                 </span>
                  Hire  Job
                 Seeker
+                &nbsp;
+                <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
               </a>
             </li>
-
+<hr class="style1">
 
             <li role="presentation">
                 <a
@@ -156,10 +158,12 @@
                     ><i class="fa fa-pencil-square-o" aria-hidden="true"></i
                   ></span>
                   Manage  Profile
+                  &nbsp;
+                <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
                 </a>
               </li>
 
-        
+        <hr class="style1">
 
             <!-- <li role="presentation" >
               <a
@@ -183,10 +187,12 @@
                   ><i class="fa fa-pencil-square-o" aria-hidden="true"></i
                 ></span>
                 Manage Subscriptions
+                &nbsp;
+                <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
               </a>
             </li>
 
-
+<hr class="style1">
             <li role="presentation">
                     <a
                       href="/user/dashboard"
@@ -197,9 +203,11 @@
                         ><i class="fa fa-pencil-square-o" aria-hidden="true"></i
                       ></span>
                       Manage Reviews
+                      &nbsp;
+                <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
                     </a>
                   </li>
-
+<hr class="style1">
            
           </ul>
         </div>
@@ -211,7 +219,7 @@
                     <div id="ProfileInfo" class="displayinformation">
                       <div class="title title-after secColor whitefont">
                       
-                        <h4 class="myTitle"><b>Profile Summary </b></h4>
+                        <h4 class="myTitle"><b>Profile Summary <i class="fa fa-arrow-circle-down"></i></b></h4>
                       </div>
 
                       <div class="media-body LR_Padding">
@@ -229,7 +237,7 @@
                     <div id="JobCategoriesInfo" class="displayinformation">
                       <div class="title title-after secColor whitefont">
                         <!-- <div class="icon"><img src="images/icons/2.png" alt="Icon" class="img-responsive"></div>  -->
-                        <h4 class="myTitle"><b> List of what i can Do </b></h4>
+                        <h4 class="myTitle"><b> List of what i can Do <i class="fa fa-arrow-circle-down"></i></b></h4>
                       </div>
                       <div style="padding:15px;">
                          {{#if hasServices}}
@@ -254,48 +262,62 @@
                     <div id="ContactInfo" class="displayinformation">
                                           <div class="title title-after secColor whitefont">
                                           <!-- <div class="icon"><img src="images/icons/2.png" alt="Icon" class="img-responsive"></div>  -->
-                                          <h4 class="myTitle"><b> Contact Information </b></h4>
+                                          <h4 class="myTitle"><b> Contact Information <i class="fa fa-arrow-circle-down"></i></b></h4>
                                           </div>
                                         
 
-                                          <div id="div_Contact" class="LR_Padding">
+                                           <div id="div_Contact" class="LR_Padding">
 
                                               <div class="LR_Padding">
-                                                <h4 class="contact">Fullname :</h4>
+                                                     <h4 class="contact">Fullname :</h4>
                                                       {{#if userProfile.fullname}}
-                                                        <p >
-                                                          {{ userProfile.fullname }}
-                                                        </p>
+                                                      <button class="btn btn-primary">
+                                                        <i class="fa fa-star" aria-hidden="true"></i> {{ userProfile.fullname }}
+                                                      </button>
                                                       {{else}}
-                                                          <p>Not Available</p>
+                                                          <p>Not Fullname, please update your status</p>
                                                       {{/if}}
-                                                       
+                                                      
                                                       <h4 class="contact">Address :</h4>
                                                       {{#if userProfile.address}}
-                                                        <p >
-                                                          {{ userProfile.address }}
-                                                        </p>
+                                                      <button class="btn btn-primary">
+                                                        <i class="fa fa-star" aria-hidden="true"></i> {{ userProfile.address }}
+                                                      </button>
                                                       {{else}}
                                                           <p>No address available, please update your status</p>
                                                       {{/if}}
                                                       
                                               <p>
                                                       <h4 class="contact">School :</h4>
-                                                      {{userDetails.school.name}}, {{userDetails.school.location}}
+                                                      <button class="btn btn-primary">
+                                                        <i class="fa fa-star" aria-hidden="true"></i> {{userDetails.school.name}}
+                                                      </button>,
+                                                      <button class="btn btn-primary">
+                                                        <i class="fa fa-star" aria-hidden="true"></i>{{userDetails.school.location}}
+                                                      </button>
                                                     
                                               </p>
 
                                               <p>
                                                       <h4 class="contact"> Email & Phone Number:</h4>
-                                                    {{userDetails.email}} , 
-                                                    {{userDetails.phone}}
+                                                      <button class="btn btn-primary">
+                                                        <i class="fa fa-star" aria-hidden="true"></i>{{userDetails.email}}
+                                                      </button>
+                                                     , 
+                                                     <button class="btn btn-primary">
+                                                        <i class="fa fa-star" aria-hidden="true"></i>{{userDetails.phone}}
+                                                      </button>
+                                                    
                                               </p>
                                               <p>
                                                   <h4 class="contact">Contact description</h4>
                                                  <h5 class="contact">
                                                    <b>WhatsApp:</b>
                                                    {{#if userProfile.whatsapp}}
-                                                    {{userProfile.whatsapp}}
+                                                   <button class="btn btn-primary">
+                                                      <i class="fa fa-star" aria-hidden="true"></i>{{userProfile.whatsapp}}
+                                                    </button>
+                                                    
                                                   {{else}}
                                                     Not set
                                                   {{/if}}
@@ -319,7 +341,7 @@
 
                                   <div class="title title-after secColor whitefont">
                                           <!-- <div class="icon"><img src="images/icons/2.png" alt="Icon" class="img-responsive"></div>  -->
-                                          <h4 class="myTitle"><b> Top Reviews </b></h4>
+                                          <h4 class="myTitle"><b> Top Reviews <i class="fa fa-arrow-circle-down"></i></b></h4>
                                           </div>
 
 
@@ -359,7 +381,7 @@
 
                     <div class="title title-after secColor whitefont">
                             <!-- <div class="icon"><img src="images/icons/2.png" alt="Icon" class="img-responsive"></div>  -->
-                            <h4 class="myTitle"><b> Review User </b></h4>
+                            <h4 class="myTitle"><b> Review User  <i class="fa fa-arrow-circle-down"></i></b></h4>
                     </div>
 
                     <form id="reviewForm" style="padding:15px;">
