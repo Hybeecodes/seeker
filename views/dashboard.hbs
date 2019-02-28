@@ -232,7 +232,15 @@
                                           <div id="div_Contact" class="LR_Padding">
 
                                               <div class="LR_Padding">
-                                              
+                                                     <h4 class="contact">Fullname :</h4>
+                                                      {{#if userProfile.fullname}}
+                                                        <p >
+                                                          {{ userProfile.fullname }}
+                                                        </p>
+                                                      {{else}}
+                                                          <p>Not Fullname, please update your status</p>
+                                                      {{/if}}
+                                                      
                                                       <h4 class="contact">Address :</h4>
                                                       {{#if userProfile.address}}
                                                         <p>

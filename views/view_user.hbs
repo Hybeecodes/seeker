@@ -123,8 +123,11 @@
 
         <div class="col-sm-5 col-md-4">
           <div class="title secColor whitefont">
+            <a href="/user/dashboard">
+               <h4 class="myTitle" style="color:white !important;"><b> <i class="fa fa-home fa-2x" aria-hidden="true"></i> Home  </b></h4>
+            </a>
             <!-- <div class="icon"><img src="images/icons/2.png" alt="Icon" class="img-responsive"></div>  -->
-            <h4 class="myTitle"><b> <i class="fa fa-home fa-2x" aria-hidden="true"></i> Home  </b></h4>
+           
           </div>
 
           <ul class="nav nav-tabs profile-tabs section" role="tablist">
@@ -258,7 +261,15 @@
                                           <div id="div_Contact" class="LR_Padding">
 
                                               <div class="LR_Padding">
-                                              
+                                                <h4 class="contact">Fullname :</h4>
+                                                      {{#if userProfile.fullname}}
+                                                        <p >
+                                                          {{ userProfile.fullname }}
+                                                        </p>
+                                                      {{else}}
+                                                          <p>Not Available</p>
+                                                      {{/if}}
+                                                       
                                                       <h4 class="contact">Address :</h4>
                                                       {{#if userProfile.address}}
                                                         <p >
@@ -361,8 +372,8 @@
                       <input type="hidden" name="" value="{{user._id}}" id="reviewer_id">
                       <p>(Reviews can be updated)</p>
                       <div class="form-group">
-                        <input type="checkbox" name="type" id="like">Like
-                        <input type="checkbox" name="type" id="dislike">Dislike
+                        <input type="checkbox" name="type" id="like">&nbsp; Like
+                        <input type="checkbox" name="type" id="dislike">&nbsp;  Dislike
                       </div>
                       
                       <button type="submit" id="reviewUser" class="btn btn-primary">Review</button>

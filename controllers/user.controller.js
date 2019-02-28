@@ -14,6 +14,7 @@ const getDashboard = async(req,res) => {
         const userDetails = await getUserDetails(user._id);
 
         const allReviews = await getAllUserReviews(user._id);
+        // console.log(allReviews);
         const hasReviews = allReviews.length > 0? true: false;
         const schools = await getAllSchools();
 
@@ -151,7 +152,8 @@ const getUserProfilePage = async(req,res) => {
         const serviceCount = await getNumberOfCategories();
 
         const allReviews = await getAllUserReviews(id);
-
+        // console.log(allReviews);
+        const hasReviews = allReviews.length > 0? true: false;
         const userProfile = await getUserProfile(id);
         const allServices = await getAllServices();
         const jobs = positiveReviews.length + negativeReviews.length;
@@ -166,6 +168,7 @@ const getUserProfilePage = async(req,res) => {
             jobs,
             userDetails,
             userProfile,
+            hasReviews,
             hasServices,
             services: userDetails.services,
             allServices,
