@@ -84,6 +84,25 @@ const search = async (req,res) => {
     res.render('search',{title:"Search -Result",search, positiveReviews, negativeReviews,user,allReviews, schools, allServices});
 }
 
+const searchUser = async (req,res) => {
+    const {username } = req.query;
+    const user = req.session.user;
+    let users = [];
+    if(validateData(username)){
+        users = await User.find({username:   {'$regex': `${username}`}}).populate(['services','school']);
+   }else{
+        users = await User.find().populate(['services','school']);
+   }
+   const search = users;
+    const schools = await getAllSchools();
+    const allServices = await getAllServices();
+    const positiveReviews = await getUserPositiveReviews(user._id);
+    const allReviews = await getAllUserReviews(user._id);
+        // get total negative reviews
+    const negativeReviews = await getUserNegativeReviews(user._id);
+    res.render('search',{title:"Search -Result",search, positiveReviews, negativeReviews,user,allReviews, schools, allServices});
+}
+
 const addUserService = async(req,res) => {
     const { services,user_id } = req.body;
     try {
@@ -457,6 +476,7 @@ module.exports = {
     addUserService,
     removeUserService,
     search,
+    searchUser,
     getUserProfilePage,
     reviewUser
 }

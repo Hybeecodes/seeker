@@ -100,14 +100,17 @@
             <h4 class="myTitle"><b> <i class="fa fa-home fa-2x" aria-hidden="true"></i> Home  </b></h4>
           </div>
 
-          <ul class="nav nav-tabs profile-tabs section" role="tablist">
-            <li role="presentation" class="active">
+         <ul class="nav nav-tabs profile-tabs section" role="tablist">
+            <li role="presentation">
               <a
-                href="#account-info"
+                href="/user/dashboard"
                 aria-controls="account-info"
                 role="tab"
                 data-toggle="tab"
-                ><i class="fa fa-life-ring" aria-hidden="true"></i> Hire  Job
+                ><span>
+                  <i class="fa fa-life-ring" aria-hidden="true"></i>
+                </span>
+                 Hire  Job
                 Seeker
               </a>
             </li>
@@ -115,7 +118,7 @@
 
             <li role="presentation">
                 <a
-                  href="#edit-resume"
+                  href="/user/dashboard"
                   aria-controls="edit-resume"
                   role="tab"
                   data-toggle="tab"
@@ -125,10 +128,24 @@
                   Manage  Profile
                 </a>
               </li>
+
+        
+
+            <!-- <li role="presentation" >
+              <a
+                href="#account-info"
+                aria-controls="account-info"
+                role="tab"
+                data-toggle="tab"
+                ><i class="fa fa-life-ring" aria-hidden="true"></i> Manage Bank
+                Account</a
+              >
+            </li> -->
+
            
             <li role="presentation">
               <a
-                href="#edit-resume"
+                href="/user/dashboard"
                 aria-controls="edit-resume"
                 role="tab"
                 data-toggle="tab"
@@ -142,7 +159,7 @@
 
             <li role="presentation">
                     <a
-                      href="#edit-resume"
+                      href="/user/dashboard"
                       aria-controls="edit-resume"
                       role="tab"
                       data-toggle="tab"
@@ -219,9 +236,9 @@
                       <div class="clearfix">
                         <div class="company-logo">
                           {{#if userResult.profile_pic}}
-                            <img src="/{{userResult.profile_pic}}" alt="images" width="50" height="50" class="img-rounded">
+                            <img src="/{{userResult.profile_pic}}" alt="{{userResult.username}}" width="50" height="50" class="img-rounded">
                           {{else}}
-                            <img src="/uploads/avatar.png" alt="images" width="50" height="50" class="img-responsive">
+                            <img src="/uploads/avatar.png" alt="{{userResult.username}}" width="50" height="50" class="img-responsive">
                           {{/if}}
                           
                         </div>

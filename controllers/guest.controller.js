@@ -54,6 +54,7 @@ const authenticate = async(req,res) => {
                 }
             }
         } catch (error) {
+            console.log(error)
             res.json({status:0,message:error.message});
         }
     }

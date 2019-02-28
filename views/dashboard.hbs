@@ -158,18 +158,19 @@
 
 
             <li role="presentation">
-                    <a
-                      href="#edit-resume"
-                      aria-controls="edit-resume"
-                      role="tab"
-                        id="manage_review"
-                      data-toggle="tab"
-                      ><span
-                        ><i class="fa fa-pencil-square-o" aria-hidden="true"></i
-                      ></span>
-                      Manage Reviews
-                    </a>
-                  </li>
+              <a
+                href="#edit-resume"
+                aria-controls="edit-resume"
+                role="tab"
+                  id="manage_review"
+                data-toggle="tab"
+                ><span
+                  ><i class="fa fa-pencil-square-o" aria-hidden="true"></i
+                ></span>
+                Manage Reviews
+              </a>
+            </li>
+
 
            
           </ul>
@@ -737,9 +738,19 @@
 
          </div>
 
+        <div id="searchUserDiv" style="display: none;">
+          <div class="title title-after secColor whitefont">
+          
+            <h4 class="myTitle"><b>Search For Member To Review  </b></h4>
+          </div>
+          <form action="/user/find_user" method="GET">
+            <div class="form-group">
+              <input type="text" name="username" id="username" placeholder="Type In Username" class="form-control">
+            </div>
 
-       
-
+            <button type="submit" class="btn btn-primary" id="find_user">Find User</button>
+          </form>
+        </div>
 
          
           </div>
@@ -767,21 +778,33 @@
           $('#SubscriptionManage_View').hide();
            $('#JobSeeker_View').hide();
           $('#ProfileManage_View').show();
+          $('#searchUserDiv').hide();
         });
         $('#manage_sub').click(function(){
           $('#Dashboard_View').hide();
           $('#ProfileManage_View').hide();
            $('#JobSeeker_View').hide();
           $('#SubscriptionManage_View').show();
+          $('#searchUserDiv').hide();
         });
         $('#search').click(function(){
           $('#Dashboard_View').hide();
           $('#ProfileManage_View').hide();
           $('#SubscriptionManage_View').hide();
           $('#JobSeeker_View').show();
+          $('#searchUserDiv').hide();
         });
         $('#home').click(function(){
           $('#Dashboard_View').show();
+          $('#ProfileManage_View').hide();
+          $('#SubscriptionManage_View').hide();
+          $('#JobSeeker_View').hide();
+          $('#searchUserDiv').hide();
+        });
+
+        $('#manage_review').click(function(){
+          $('#Dashboard_View').hide();
+           $('#searchUserDiv').show();
           $('#ProfileManage_View').hide();
           $('#SubscriptionManage_View').hide();
           $('#JobSeeker_View').hide();

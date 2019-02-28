@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { getDashboard, postProfile, addUserService, removeUserService, search, getUserProfilePage, reviewUser } = require('../controllers/user.controller');
+const { getDashboard, postProfile, addUserService, removeUserService, search, getUserProfilePage, reviewUser, searchUser } = require('../controllers/user.controller');
 const ensureLoggedIn = require('../middlewares/ensureLoggedIn');
 const multer = require('multer');
 
@@ -27,6 +27,8 @@ router.post('/add_services',addUserService);
 router.post('/remove_service', removeUserService);
 
 router.get('/search',search);
+
+router.get('/find_user',searchUser);
 
 router.get('/profile/:id',getUserProfilePage);
 
