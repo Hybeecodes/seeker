@@ -58,19 +58,26 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <!-- DATA TABLE -->
-                                <h3 class="title-5 m-b-35">Job Categories</h3>
-                                <form id="serviceForm">
+                                <h3 class="title-5 m-b-35">Schools</h3>
+                                <form id="schoolForm">
                                     <div class="first alert"></div>
                                     <div class="row">
                                         <div class="form-group col">
-                                            <input type="text" name="" id="name" class="form-control" placeholder="Service Name">
+                                            <input type="text" name="" id="name" class="form-control" placeholder="School Name">
+                                        </div>
+
+                                         <div class="form-group col">
+                                            <input type="text" name="" id="location" class="form-control" placeholder="School Location">
+                                        </div>
+                                        <div class="form-group col">
+                                            <input type="text" name="" id="state" class="form-control" placeholder="State">
                                         </div>
 
                                         <div class="form-group col">
-                                            <textarea type="text" name="" id="description" class="form-control" placeholder="Service Description"></textarea>
+                                            <input type="text" name="" id="country" class="form-control" placeholder="Country">
                                         </div>
                                         <div class="form-group col">
-                                            <button type="submit" class="btn btn-primary">Add Service</button>
+                                            <button type="submit" class="btn btn-primary">Add School</button>
                                         </div>
                                     </div>
                                 </form>
@@ -85,13 +92,14 @@
                                                     </label>
                                                 </th>
                                                  <th>Name</th>
-                                                <th>Description</th>
-                                                <th>Users</th>
+                                                <th>Location</th>
+                                                <th>State</th>
+                                                <th>Country</th>
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {{#if hasServices}}
-                                                  {{#each services as |service|}}
+                                                  {{#each schools as |school|}}
                                                 <tr class="tr-shadow">
                                                 <td>
                                                     <label class="au-checkbox">
@@ -99,25 +107,23 @@
                                                         <span class="au-checkmark"></span>
                                                     </label>
                                                 </td>
-                                                <td>{{ service.name }}</td>
-                                                <td>{{ service.description }}</td>
-                                                <td>{{ service.users.length }}</td>
+                                                <td>{{ school.name }}</td>
+                                                <td>{{ school.location }}</td>
+                                                <td>{{ school.state }}</td>
+                                                <td>{{ school.country }}</td>
                                                 <td>
                                                     <div class="table-data-feature">
-                                                       <button class="item" data-toggle="tooltip" onclick="editService('{{ service._id }}','{{ service.name }}','{{ service.description }}')" data-placement="top" title="Edit Service">
+                                                       <button class="item" data-toggle="tooltip" onclick="editSchool('{{ school._id }}','{{ school.name }}','{{ school.location }}','{{ school.state }}', '{{ school.country }}')" data-placement="top" title="Edit School">
                                                             <i class="zmdi zmdi-edit"></i>
                                                         </button>                                                 
-                                                        <button class="item" data-toggle="tooltip" onclick="deleteService('{{ service._id }}')" data-placement="top" title="Delete Service">
+                                                        <button class="item" data-toggle="tooltip" onclick="deleteSchool('{{ school._id }}')" data-placement="top" title="Delete School">
                                                             <i class="zmdi zmdi-delete"></i>
                                                         </button>
                                                     </div>
                                                 </td>
                                             </tr>
                                             {{/each}}
-                                            {{else}}
-                                                <p>No Services</p>
-                                            {{/if}}
-                                          
+                                            
                                         </tbody>
                                     </table>
                                 </div>
@@ -137,7 +143,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Edit Service</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Edit School</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -149,15 +155,23 @@
                 <label for="">Name</label>
                 <input type="text" name="name" value="" id="modal_name" class="form-control">
             </div>
-            <input type="hidden" name="" id="modal_service">
+            <input type="hidden" name="" id="modal_school">
             <div class="form-group">
-                <label for="">Description</label>
-                <textarea name="description" class="form-control" id="modal_description"></textarea>
+                <label for="">Location</label>
+                <input type="text" name="location" value="" id="modal_location" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="">State</label>
+                <input type="text" name="state" value="" id="modal_state" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="">Country</label>
+                <input type="text" name="country" value="" id="modal_country" class="form-control">
             </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" id="updateService" class="btn btn-primary">Save changes</button>
+        <button type="button" id="updateSchool" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
@@ -184,28 +198,33 @@
     <script src="vendor/chartjs/Chart.bundle.min.js"></script>
     <script src="vendor/select2/select2.min.js">
     </script>
+    
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- Main JS-->
     <script src="js/main.js"></script>
 
     <script>
-        function editService(service_id, name, description) {
+        function editSchool(service_id, name, location, state, country) {
             $('#modal_name').val(name);
-            $('#modal_service').val(service_id);
-            $('#modal_description').val(description);
+            $('#modal_state').val(state);
+            $('#modal_country').val(country);
+            $('#modal_school').val(service_id);
+            $('#modal_location').val(location);
             $('#editServiceModal').modal();
         }
 
-        $('#updateService').click(function(e) {
+        $('#updateSchool').click(function(e) {
             e.preventDefault();
-            const service = {
+            const school = {
                 "name": $('#modal_name').val(),
-                "description": $('#modal_description').val(),
-                "service": $('#modal_service').val()
+                "location": $('#modal_location').val(),
+                "state": $('#modal_state').val(),
+                "country": $('#modal_country').val(),
+                "school": $('#modal_school').val()
             };
-            $.post('/admin/update_service',service, function(data){
+            $.post('/admin/update_school',school, function(data){
                 if(data['status']){
-                    swal('Great!',"Service Updated Successfully",'success').then(() => {
+                    swal('Great!',"School Updated Successfully",'success').then(() => {
                         location.reload(true);
                     })
                 }else{
@@ -214,15 +233,17 @@
             })
         })
 
-        $('#serviceForm').submit(function(e){
+        $('#schoolForm').submit(function(e){
             e.preventDefault();
-            const service = {
+            const school = {
                 "name": $('#name').val(),
-                "description": $('#description').val()
+                "location": $('#location').val(),
+                "state": $('#state').val(),
+                "country": $('#country').val()
             };
-            $.post('/admin/add_service',service, function(data){
+            $.post('/admin/add_school',school, function(data){
                 if(data['status']){
-                    swal('Great!',"Service Added Successfully",'success').then(() => {
+                    swal('Great!',"School Added Successfully",'success').then(() => {
                         location.reload(true);
                     })
                 }else{
@@ -230,10 +251,10 @@
                 }
             })
         })
-        function deleteService(service_id) {
-            $.post(`/admin/delete_service/${service_id}`,function(data){
+        function deleteSchool(school_id) {
+            $.post(`/admin/delete_school/${school_id}`,function(data){
                 if(data['status']){
-                    swal('Great!',"Service Removed Successfully",'success').then(() => {
+                    swal('Great!',"School Removed Successfully",'success').then(() => {
                         location.reload(true);
                     })
                 }else{

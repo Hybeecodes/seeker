@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { getLogin, authenticate, getUsers, getIndex, getServices, create, suspendUser, removeUser, unSuspendUser,removeService, updateService } = require('../controllers/admin.controller');
+const { getLogin, authenticate, getUsers, getIndex, getServices, create, suspendUser, removeUser, unSuspendUser,removeService, updateService, getSchools, removeSchool, updateSchool, addSchool } = require('../controllers/admin.controller');
 const {addService} = require('../controllers/service.controller');
 const ensureLoggedIn = require('../middlewares/ensureAdminLoggedIn');
 
@@ -31,6 +31,14 @@ router.post('/add_service',addService);
 router.post('/delete_service/:service_id',removeService)
 
 router.post('/update_service',updateService);
+
+router.get('/schools', getSchools);
+
+router.post('/add_school',addSchool);
+
+router.post('/delete_school/:school_id',removeSchool)
+
+router.post('/update_school',updateSchool);
 
 router.get('/logout', (req,res) => {
     req.session.admin = null;

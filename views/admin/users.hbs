@@ -158,8 +158,8 @@
     <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
     <script src="vendor/chartjs/Chart.bundle.min.js"></script>
     <script src="vendor/select2/select2.min.js">
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     </script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <!-- Main JS-->
     <script src="js/main.js"></script>
@@ -171,6 +171,8 @@
                     swal('Great!',"User Suspended Successfully",'success').then(() => {
                         location.reload(true);
                     })
+                }else{
+                    swal('Huh!',data['message'],'error');
                 }
             })
         }
@@ -181,6 +183,8 @@
                     swal('Great!',"User UnSuspended Successfully",'success').then(() => {
                         location.reload(true);
                     })
+                }else{
+                    swal('Huh!',data['message'],'error');
                 }
             })
         }
@@ -190,6 +194,8 @@
                     swal('Great!',data['message'],'success').then(() => {
                         location.reload(true);
                     })
+                }else{
+                    swal('Huh!',data['message'],'error');
                 }
             })
         }

@@ -59,7 +59,7 @@
                                         <span class="au-breadcrumb-span">You are here:</span>
                                         <ul class="list-unstyled list-inline au-breadcrumb__list">
                                             <li class="list-inline-item active">
-                                                <a href="#">Home</a>
+                                                <a href="/admin">Home</a>
                                             </li>
                                             <li class="list-inline-item seprate">
                                                 <span>/</span>
@@ -67,8 +67,8 @@
                                             <li class="list-inline-item">Dashboard</li>
                                         </ul>
                                     </div>
-                                    <button class="au-btn au-btn-icon au-btn--green">
-                                        <i class="zmdi zmdi-plus"></i>add Services</button>
+                                    <a href="/admin/services" class="btn">
+                                        <i class="zmdi zmdi-plus"></i>Add Services</a>
                                 </div>
                             </div>
                         </div>
@@ -111,84 +111,47 @@
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-xl-6">
+                            <div class="col">
                                 <h3>Users</h3>
                                 <!-- USER DATA-->
                                <table class="table table-data2">
                                         <thead>
                                             <tr>
-                                                <th>
-                                                    <label class="au-checkbox">
-                                                        <input type="checkbox">
-                                                        <span class="au-checkmark"></span>
-                                                    </label>
-                                                </th>
                                                  <th>Username</th>
                                                 <th>Firstname</th>
                                                 <th>Lastname</th>
                                                 <th>Email</th>
+                                                <th>School</th>
+                                                <th>Phone</th>
+                                                <th>Status</th>
                                                 {{!-- <th>Last Login</th> --}}
                                             </tr>
                                         </thead>
                                         <tbody>
                                             {{#each users as |user|}}
                                                 <tr class="tr-shadow">
-                                                <td>
-                                                    <label class="au-checkbox">
-                                                        <input type="checkbox">
-                                                        <span class="au-checkmark"></span>
-                                                    </label>
-                                                </td>
                                                 <td>{{ user.username }}</td>
                                                 <td>{{ user.firstname }}</td>
                                                 <td>{{ user.lastname }}</td>
                                                 <td>
                                                     <span class="block-email">{{ user.email }}</span>
                                                 </td>
-                                                
+                                                <td>{{ user.school.name }}</td>
+                                                <td class="desc">{{ user.phone }}</td>
+                                                <td>
+                                                    {{#if user.isSuspended}}
+                                                        <span class="status--denied">Suspended</span>
+                                                    {{else}}
+                                                        <span class="status--process">Active</span>
+                                                    {{/if}}
+                                                    
+                                                </td>
+                                                {{!-- <td>2018-09-27 02:12</td> --}}
                                             </tr>
                                             {{/each}}
                                         </tbody>
                                     </table>
                                 <!-- END USER DATA-->
-                            </div>
-                            <div class="col-xl-6">
-                                <h3>Job Categories</h3>
-                                <!-- MAP DATA-->
-                                <table class="table table-data2">
-                                        <thead>
-                                            <tr>
-                                                <th>
-                                                    <label class="au-checkbox">
-                                                        <input type="checkbox">
-                                                        <span class="au-checkmark"></span>
-                                                    </label>
-                                                </th>
-                                                 <th>Name</th>
-                                                <th>Description</th>
-                                                <th>Users</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                  {{#each services as |service|}}
-                                                <tr class="tr-shadow">
-                                                <td>
-                                                    <label class="au-checkbox">
-                                                        <input type="checkbox">
-                                                        <span class="au-checkmark"></span>
-                                                    </label>
-                                                </td>
-                                                <td>{{ service.name }}</td>
-                                                <td>{{ service.description }}</td>
-                                                <td>{{ service.users.length }}</td>
-                                                
-                                            </tr>
-                                            {{/each}}
-                                            
-                                          
-                                        </tbody>
-                                    </table>
-                                <!-- END MAP DATA-->
                             </div>
                         </div>
                     </div>
