@@ -115,6 +115,13 @@ select:focus,
   box-shadow: none !important;
 }
 
+.members-area {
+  color: white !important;
+}
+.members-area:hover {
+  color: #2c1106;
+}
+
 .section-title h1 {
   font-size: 24px;
   font-weight: bold;
