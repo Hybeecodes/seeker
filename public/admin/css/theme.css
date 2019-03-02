@@ -2311,6 +2311,7 @@ section {
     }
 }
 
+
 .header-desktop2 .section__content {
     top: 50%;
     -webkit-transform: translateY(-50%);
@@ -4244,8 +4245,10 @@ a {
     margin: 0;
 }
 
+
 .table-responsive.table--no-card {
     -webkit-border-radius: 10px;
+    overflow-x:auto;
     -moz-border-radius: 10px;
     border-radius: 10px;
     -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
