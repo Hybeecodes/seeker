@@ -279,15 +279,23 @@
                                                       </button>
                                           
                                                       <h5 class="contact">
-                                                      <button class="btn btn-primary">
+                                                        {{#if userProfile.level}}
+                                                          <button class="btn btn-primary">
                                                           <i class="fa fa-star" aria-hidden="true"></i>{{userProfile.level}} level
-                                                      </button>
-                                                      <button class="btn btn-primary">
+                                                        </button>
+                                                        {{/if}}
+                                                        {{#if userProfile.department}}
+                                                          <button class="btn btn-primary">
                                                           <i class="fa fa-star" aria-hidden="true"></i>{{userProfile.department}}
-                                                      </button>
-                                                      <button class="btn btn-primary">
+                                                        </button>
+                                                        {{/if}}
+                                                        {{#if userProfile.faculty}}
+                                                          <button class="btn btn-primary">
                                                           <i class="fa fa-star" aria-hidden="true"></i>{{userProfile.faculty}}
-                                                      </button>
+                                                        </button>
+                                                        {{/if}}
+                                                      
+                                                      
                                                         
                                                     </h5> 
                                               </p>
