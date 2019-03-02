@@ -77,6 +77,7 @@
                                                 <th>School</th>
                                                 <th>Phone</th>
                                                 <th>Status</th>
+                                                <th>Action</th>
                                                 {{!-- <th>Last Login</th> --}}
                                             </tr>
                                         </thead>
@@ -84,10 +85,11 @@
                                             {{#each users as |user|}}
                                                 <tr class="tr-shadow">
                                                 <td>
-                                                    <label class="au-checkbox">
-                                                        <input type="checkbox">
-                                                        <span class="au-checkmark"></span>
-                                                    </label>
+                                                    {{#if user.profile_pic}}
+                                                        <img src="/{{ user.profile_pic}}" alt="{{user.username}}" style="height:50px; !important;" width="50" height="50" class=" rounded-circle">
+                                                    {{else}}
+                                                        <img src="/uploads/avatar.png" alt="{{user.username}}" width="50" height="50" class="img-rounded">
+                                                    {{/if}}
                                                 </td>
                                                 <td>{{ user.username }}</td>
                                                 <td>{{ user.firstname }}</td>
@@ -165,8 +167,10 @@
     <script src="js/main.js"></script>
 
     <script>
-        $(document).ready( function () {
-            $('.table').DataTable();
+        $(document).ready(function() {
+            $('.table').DataTable( {
+                "pagingType": "full_numbers"
+            } );
         } );
         function suspend(user_id) {
             $.post(`/admin/suspend_user/${user_id}`,function(data){

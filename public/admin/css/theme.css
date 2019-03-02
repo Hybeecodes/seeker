@@ -4245,7 +4245,17 @@ a {
     margin: 0;
 }
 
+.profile-img {
+    height: 250px;
+    width: 250px;
+  }
 
+.profile-img {
+    border: 5px solid white;
+    border-radius: 100%;
+    z-index: 10;
+    margin: 10px 0px 3px 0px;
+  }
 .table-responsive.table--no-card {
     -webkit-border-radius: 10px;
     overflow-x:auto;
