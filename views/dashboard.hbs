@@ -37,7 +37,7 @@
           
           <div class="profile-name"><p>{{user.username}}</p></div>
         </div>
-        <button type="button" id="upload" style="width:25%;" class="btn btn-warning manage_profile">
+        <button type="button" id="upload" style="width:25%;"  class="btn btn-warning manage_profile">
           Upload Picture
         </button>
       </div>
@@ -97,7 +97,7 @@
         <div class="col-sm-5 col-md-4">
           <div class="title secColor whitefont">
             <!-- <div class="icon"><img src="images/icons/2.png" alt="Icon" class="img-responsive"></div>  -->
-            <h4 class="myTitle" style="cursor:pointer" id="home"><b> <i class="fa fa-home fa-2x" aria-hidden="true"></i> &nbsp; <span>Home</span>  </b></h4>
+            <h3 class="myTitle" style="cursor:pointer" id="home"><b> <i class="fa fa-angle-double-left" aria-hidden="true"></i> <span>Home</span>  </b></h3>
           </div>
 
           <ul class="nav nav-tabs profile-tabs section" role="tablist">
@@ -110,7 +110,7 @@
                 data-toggle="tab"
                 ><i class="fa fa-life-ring" aria-hidden="true"></i> Hire  Job
                 Seeker &nbsp;
-                <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+                <i class="fa fa-chevron-right" aria-hidden="true"></i>
               </a>
             </li>
 
@@ -128,7 +128,7 @@
                   ></span>
                   Manage  Profile
                   &nbsp;
-                <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+                <i class="fa fa-chevron-right" aria-hidden="true"></i>
                 </a>
               </li>
 
@@ -158,7 +158,7 @@
                 ></span>
                 Manage Subscriptions
                 &nbsp;
-                <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+                <i class="fa fa-chevron-right" aria-hidden="true"></i>
               </a>
             </li>
 
@@ -175,7 +175,7 @@
                 ></span>
                 Manage Reviews
                 &nbsp;
-                <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+                <i class="fa fa-chevron-right" aria-hidden="true"></i>
               </a>
             </li>
 
@@ -190,7 +190,7 @@
                     <div id="ProfileInfo" class="displayinformation">
                       <div class="title title-after secColor whitefont">
                       
-                        <h4 class="myTitle"><b>Profile Summary <i class="fa fa-arrow-circle-down"></i></b></h4>
+                        <h4 class="myTitle"><b>Profile Summary <i class="fa fa-chevron-down"></i></b></h4>
                       </div>
 
                       <div class="media-body LR_Padding">
@@ -208,7 +208,7 @@
                     <div id="JobCategoriesInfo" class="displayinformation">
                       <div class="title title-after secColor whitefont">
                         <!-- <div class="icon"><img src="images/icons/2.png" alt="Icon" class="img-responsive"></div>  -->
-                        <h4 class="myTitle"><b> List of what i can Do <i class="fa fa-arrow-circle-down"></i></b></h4>
+                        <h4 class="myTitle"><b> List of what i can Do <i class="fa fa-chevron-down"></i></b></h4>
                       </div>
                       <div style="padding:15px;">
                           {{#if hasServices}}
@@ -233,7 +233,7 @@
                     <div id="ContactInfo" class="displayinformation">
                                           <div class="title title-after secColor whitefont">
                                           <!-- <div class="icon"><img src="images/icons/2.png" alt="Icon" class="img-responsive"></div>  -->
-                                          <h4 class="myTitle"><b> Contact Information <i class="fa fa-arrow-circle-down"></i> </b></h4>
+                                          <h4 class="myTitle"><b> Contact Information <i class="fa fa-chevron-down"></i> </b></h4>
                                           </div>
                                         
 
@@ -253,6 +253,12 @@
                                                       {{#if userProfile.address}}
                                                       <button class="btn btn-primary">
                                                         <i class="fa fa-star" aria-hidden="true"></i> {{ userProfile.address }}
+                                                      </button>
+                                                      <button class="btn btn-primary">
+                                                        <i class="fa fa-star" aria-hidden="true"></i> {{ userProfile.city }}
+                                                      </button>
+                                                      <button class="btn btn-primary">
+                                                        <i class="fa fa-star" aria-hidden="true"></i> {{ userProfile.state }}
                                                       </button>
                                                       {{else}}
                                                           <p>No address available, please update your status</p>
@@ -312,7 +318,7 @@
 
                                   <div class="title title-after secColor whitefont">
                                           <!-- <div class="icon"><img src="images/icons/2.png" alt="Icon" class="img-responsive"></div>  -->
-                                          <h4 class="myTitle"><b> Top Reviews <i class="fa fa-arrow-circle-down"></i></b></h4>
+                                          <h4 class="myTitle"><b> Top Reviews <i class="fa fa-chevron-down"></i></b></h4>
                                           </div>
 
 
@@ -355,7 +361,7 @@
                   <div>
                       <div class="title title-after secColor whitefont">
                       
-                        <h4 class="myTitle"><b> Member Profile <i class="fa fa-arrow-circle-down"></i> </b></h4>
+                        <h4 class="myTitle"><b> Member Profile <i class="fa fa-chevron-down"></i> </b></h4>
                       </div>
                       
 
@@ -585,7 +591,7 @@
 
                    <div class="title title-after secColor whitefont">
                       
-                        <h4 class="myTitle"><b> Browse Members to Hire <i class="fa fa-arrow-circle-down"></i> </b></h4>
+                        <h4 class="myTitle"><b> Browse Members to Hire <i class="fa fa-chevron-down"></i> </b></h4>
                       </div>
                     
                     <div class="job-topbar seperator">
@@ -669,7 +675,7 @@
                   <div >
                     <div class="title title-after secColor whitefont">
                       
-                        <h4 class="myTitle"><b> Member  Subscriptions  <i class="fa fa-arrow-circle-down"></i></b></h4>
+                        <h4 class="myTitle"><b> Member  Subscriptions  <i class="fa fa-chevron-down"></i></b></h4>
                       </div>
 
 
@@ -771,7 +777,7 @@
         <div id="searchUserDiv" style="display: none;">
           <div class="title title-after secColor whitefont">
           
-            <h4 class="myTitle"><b>Search For Member To Review  <i class="fa fa-arrow-circle-down"></i></b></h4>
+            <h4 class="myTitle"><b>Search For Member To Review  <i class="fa fa-chevron-down"></i></b></h4>
           </div>
           <form action="/user/find_user" method="GET" style="padding: 10px;">
             <div class="form-group">
@@ -837,6 +843,12 @@
           $('#ProfileManage_View').hide();
           $('#SubscriptionManage_View').hide();
           $('#JobSeeker_View').hide();
+        });
+
+        $("#upload").click(function() {
+            $('html, body').animate({
+                scrollTop: $("#profile_pic").offset().top
+            }, 2000);
         });
 
         $('#services').select2({

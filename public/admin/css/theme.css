@@ -2302,6 +2302,12 @@ section {
     .header-desktop2 {
         left: 0;
         position: relative;
+        visibility: hidden;
+        clear: both;
+        float: left;
+        margin: 10px auto 5px 20px;
+        width: 28%;
+        display: none;
     }
 }
 
@@ -2407,6 +2413,17 @@ section {
         -ms-transform-origin: 80% top;
         -o-transform-origin: 80% top;
         transform-origin: 80% top;
+    }
+
+@media screen and (max-width: 600px) {
+    .header-desktop2 {
+        visibility: hidden;
+        clear: both;
+        float: left;
+        margin: 10px auto 5px 20px;
+        width: 28%;
+        display: none;
+    }
     }
 
     .header-button2 .header-button-item .notifi-dropdown::before {

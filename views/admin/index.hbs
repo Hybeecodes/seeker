@@ -118,11 +118,9 @@
                                         <thead>
                                             <tr>
                                                  <th>Username</th>
-                                                <th>Firstname</th>
-                                                <th>Lastname</th>
+                                                
                                                 <th>Email</th>
                                                 <th>School</th>
-                                                <th>Phone</th>
                                                 <th>Status</th>
                                                 {{!-- <th>Last Login</th> --}}
                                             </tr>
@@ -131,13 +129,10 @@
                                             {{#each users as |user|}}
                                                 <tr class="tr-shadow">
                                                 <td>{{ user.username }}</td>
-                                                <td>{{ user.firstname }}</td>
-                                                <td>{{ user.lastname }}</td>
                                                 <td>
                                                     <span class="block-email">{{ user.email }}</span>
                                                 </td>
                                                 <td>{{ user.school.name }}</td>
-                                                <td class="desc">{{ user.phone }}</td>
                                                 <td>
                                                     {{#if user.isSuspended}}
                                                         <span class="status--denied">Suspended</span>
