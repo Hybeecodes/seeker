@@ -58,9 +58,10 @@ const getIndex = async(req,res) => {
     try {
         const services = await Service.find();
         const users = await User.find().populate('school');
-        console.log(users)
+        const schools = await School.find();
+        // console.log(users)
         const admin = req.session.admin;
-        res.render('admin/index',{title: "Campus Hustle", admin, users,services});
+        res.render('admin/index',{title: "Campus Hustle", admin, users,services, schools});
     } catch (error) {
         
     }
