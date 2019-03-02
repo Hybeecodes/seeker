@@ -2055,7 +2055,7 @@ select:focus,
 .nav-tabs.nav-justified > .active > a:hover,
 .nav-tabs.nav-justified > li > a:hover {
   border: 0;
-  color: #fff;
+  color: #fff !important;
   background-color: #2c1106;
 }
 
