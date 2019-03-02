@@ -10,7 +10,7 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title> {{ title }} </title>
+    <title>{{title}}</title>
 
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
@@ -29,7 +29,6 @@
     <link href="vendor/slick/slick.css" rel="stylesheet" media="all">
     <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
     <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
-    <link href="vendor/vector-map/jqvmap.min.css" rel="stylesheet" media="all">
 
     <!-- Main CSS-->
     <link href="css/theme.css" rel="stylesheet" media="all">
@@ -38,17 +37,22 @@
 
 <body class="animsition">
     <div class="page-wrapper">
+        <!-- HEADER MOBILE-->
+        {{> _sidenav_mobile }}
+        <!-- END HEADER MOBILE-->
+
         <!-- MENU SIDEBAR-->
-       {{> _sidenav }}
+        {{> _sidenav }}
         <!-- END MENU SIDEBAR-->
 
         <!-- PAGE CONTAINER-->
-        <div class="page-container2">
+        <div class="page-container">
             <!-- HEADER DESKTOP-->
             {{> _header }}
             <!-- END HEADER DESKTOP-->
 
-            <!-- BREADCRUMB-->
+            <!-- MAIN CONTENT-->
+             <!-- BREADCRUMB-->
             <section class="au-breadcrumb m-t-75">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
@@ -179,13 +183,47 @@
     <script src="vendor/chartjs/Chart.bundle.min.js"></script>
     <script src="vendor/select2/select2.min.js">
     </script>
-    <script src="vendor/vector-map/jquery.vmap.js"></script>
-    <script src="vendor/vector-map/jquery.vmap.min.js"></script>
-    <script src="vendor/vector-map/jquery.vmap.sampledata.js"></script>
-    <script src="vendor/vector-map/jquery.vmap.world.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <!-- Main JS-->
     <script src="js/main.js"></script>
+
+    <script>
+        function suspend(user_id) {
+            $.post(`/admin/suspend_user/${user_id}`,function(data){
+                if(data['status']){
+                    swal('Great!',"User Suspended Successfully",'success').then(() => {
+                        location.reload(true);
+                    })
+                }else{
+                    swal('Huh!',data['message'],'error');
+                }
+            })
+        }
+
+        function unsuspend(user_id) {
+            $.post(`/admin/unsuspend_user/${user_id}`,function(data){
+                if(data['status']){
+                    swal('Great!',"User UnSuspended Successfully",'success').then(() => {
+                        location.reload(true);
+                    })
+                }else{
+                    swal('Huh!',data['message'],'error');
+                }
+            })
+        }
+        function deleteUser(user_id) {
+            $.post(`/admin/delete_user/${user_id}`,function(data){
+                if(data['status']){
+                    swal('Great!',data['message'],'success').then(() => {
+                        location.reload(true);
+                    })
+                }else{
+                    swal('Huh!',data['message'],'error');
+                }
+            })
+        }
+    </script>
 
 </body>
 

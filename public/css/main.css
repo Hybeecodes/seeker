@@ -87,12 +87,14 @@ h6 {
 }
 
 a,
+p,
+form,
 a:hover,
 a:focus,
 input:focus {
   text-decoration: none;
   outline: none;
-  color: #2c1106;
+  color: #2c1106 !important;
 }
 
 a:hover {
