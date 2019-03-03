@@ -7,6 +7,7 @@ const { User }= require('../models/index')
 const uniString = require('unique-string');
 const bcrypt = require('bcrypt-nodejs')
 const mail = require('../helpers/nodeMailerWithTemp');
+const validate = require('../helpers/validateData');
 router.get('/', async(req,res) => {
     if(req.session.user){
         return res.redirect('/user/dashboard');
@@ -35,6 +36,21 @@ router.post('/login',authenticate);
 
 router.get('/forgot_password', getForgotPassword);
 
+router.post('/send_message',(req,res) => {
+  const {fullname, email, subject, message} = req.body;
+  if(!validate(fullname, email, subject, message)){
+    res.json({status:0,message:"Please Fill All Required Inputs"});
+  }else{
+   
+   const send= mail.send_message(email,fullname,subject,message);
+   if(send){
+     res.json({status:1, message: "Message Sent Successfully"});
+   }else{
+    res.json({status:0, message: "Sorry, Unable to send message"})
+   }
+  }
+})
+
 router.post('/forgot-password',(req,res,next)=> {
     const { email } = req.body;
     User.findOne({email},(err,user)=>{
@@ -42,12 +58,12 @@ router.post('/forgot-password',(req,res,next)=> {
         let string = uniString();
         let token = `${email}_${string}`;
         // console.log(token);
-        let link = `http://localhost:3000/reset-password?token=${token}`; // replace the localhost:3000 with your domain
+        let link = `${process.env.BASE_URL}/reset-password?token=${token}`; // replace the localhost:3000 with your domain
         // console.log(link);
         const exp = new Date().addHours(2);
         // console.log(now);
         User.findOneAndUpdate({email},{resetPassToken:string,resetPassExp:exp}).then((user)=> {
-          mail(email,link);
+          mail.send_link(email,link);
           return res.json({status:1, message:"A reset link has been sent to your email"});
         })
       }else{

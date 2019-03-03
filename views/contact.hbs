@@ -69,23 +69,23 @@
 						<div class="section">
 							<span class="tr-title">Contact Info</span>
 							<p>There are many variations of passages of lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words</p>
-							<form action="#" class="tr-form">
+							<form action="#" id="contactForm" class="tr-form">
 								<div class="row">
 									<div class="col-sm-6">
-										<input type="text" class="form-control" required="required" placeholder="Full Name">
+										<input type="text" class="form-control" name="fullname" id="fullname" required="required" placeholder="Full Name">
 									</div>
 									<div class="col-sm-6">
-										<input type="email" class="form-control" required="required" placeholder="Email Address">
+										<input type="email" class="form-control" name="email" id="email" required="required" placeholder="Email Address">
 									</div>
 								</div>
 								<div class="form-group">
-									<input type="text" class="form-control" required="required" placeholder="Subject">						
+									<input type="text" class="form-control" name="subject" id="subject" required="required" placeholder="Subject">						
 								</div> 
 								<div class="form-group">
-									<textarea name="message" class="form-control" required="required" rows="5" placeholder="Message"></textarea>	
+									<textarea name="message" class="form-control" name="message" id="message" required="required" rows="5" placeholder="Message"></textarea>	
 								</div> 
 								<div class="form-group">
-									<button type="submit" class="btn btn-primary pull-right">Submit</button>
+									<button type="submit" id="submit" class="btn btn-primary pull-right">Submit</button>
 								</div>					
 							</form>							
 						</div>
@@ -96,7 +96,7 @@
 							{{!-- <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p> --}}
 							<ul class="tr-list info-list">
 								<li><i class="fa fa-phone" aria-hidden="true"></i> <span class="media-body"><span>08133788028</span> 09069349646</span></li>
-								<li><i class="fa fa-envelope-o" aria-hidden="true"></i> <span class="media-body"><span><a href="#">info@email.com</a></span> <a href="#">support@email.com</a></span></li>
+								<li><i class="fa fa-envelope-o" aria-hidden="true"></i> <span class="media-body"><span><a href="#">Support@campusHustle.com.ng</a></li>
 							</ul>
 							<span class="tr-title">Social Network</span>
 							<div class="social">
@@ -129,6 +129,28 @@
     <script src="/js/gmaps.min.js"></script>
     <script src="/js/main.js"></script>
     <script>
+
+		 $('#contactForm').submit(function(e){
+            e.preventDefault();
+            $('#submit').attr('disable',true).text('Please wait...');
+            const user = {
+				"name": $('#fullname').val(),
+                 "email": $('#email').val(),
+                 "subject": $('#subject').val(),
+				 "message": $('#message').val()
+             };
+            $.post('/send_message',user,function(data){
+                 if(data['status']){
+					swal('Great!',"Message Ssent Successfully",'success').then(()=> {
+					location.reload(true);
+					})
+				}else{
+					swal('Huh!', data['message'], 'error').then(() => {
+					$('#submit').text('Submit').attr('disabled',false);
+					})
+				}
+             })
+        })
     	(function(){
 
 	        var map;  
